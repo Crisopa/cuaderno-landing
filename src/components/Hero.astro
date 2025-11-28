@@ -1,0 +1,117 @@
+---
+const appUrl = 'https://app.cuaderno.es'
+---
+
+<section class="relative overflow-hidden bg-gradient-to-b from-primary-50 to-white pt-24 pb-16 sm:pt-32 sm:pb-24">
+  <!-- Decoración de fondo -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-primary-100/50 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[400px] h-[400px] rounded-full bg-accent-100/50 blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-16">
+      <!-- Contenido -->
+      <div class="lg:col-span-6 flex flex-col justify-center">
+        <!-- Badge -->
+        <div class="mb-6">
+          <span class="inline-flex items-center gap-2 rounded-full bg-accent-100 px-4 py-1.5 text-sm font-medium text-accent-800">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            Obligatorio desde 2025
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+          El cuaderno digital
+          <span class="text-primary-800">que no te complica la vida</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-xl">
+          Sí, el cuaderno de explotación digital es obligatorio. No, no tienes que sufrir con la aplicación del Ministerio. Registra tratamientos, parcelas y fertilización en minutos, no en horas.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a
+            href={`${appUrl}/register`}
+            class="inline-flex items-center justify-center rounded-lg bg-primary-800 px-6 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-primary-900 transition-all hover:shadow-xl hover:-translate-y-0.5"
+          >
+            Probar 30 días gratis
+            <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="#como-funciona"
+            class="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white px-6 py-3.5 text-base font-semibold text-gray-700 hover:border-primary-800 hover:text-primary-800 transition-colors"
+          >
+            Ver cómo funciona
+          </a>
+        </div>
+
+        <!-- Trust indicators -->
+        <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-gray-500">
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Sin tarjeta de crédito
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Listo en 5 minutos
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            100% válido para inspecciones
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen/Mockup -->
+      <div class="mt-12 lg:mt-0 lg:col-span-6">
+        <div class="relative">
+          <!-- Mockup placeholder - reemplazar con imagen real -->
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 shadow-2xl overflow-hidden border border-primary-200">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center p-8">
+                <div class="mx-auto w-16 h-16 rounded-xl bg-primary-800 flex items-center justify-center mb-4">
+                  <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                  </svg>
+                </div>
+                <p class="text-primary-800 font-medium">Vista previa de la aplicación</p>
+                <p class="text-primary-600 text-sm mt-1">Añade aquí un mockup o screenshot</p>
+              </div>
+            </div>
+            <!-- Simulación de interfaz -->
+            <div class="absolute top-4 left-4 right-4">
+              <div class="flex gap-2 mb-4">
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <div class="h-8 bg-white/60 rounded-lg"></div>
+            </div>
+          </div>
+
+          <!-- Elemento decorativo -->
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-xl bg-accent-500 shadow-lg flex items-center justify-center">
+            <svg class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

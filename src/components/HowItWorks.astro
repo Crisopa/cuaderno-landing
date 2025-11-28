@@ -1,0 +1,62 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Crea tu cuenta',
+    description: 'Registra tu explotación con los datos básicos: nombre, código REAFA y poco más. En 5 minutos lo tienes.',
+  },
+  {
+    number: '02',
+    title: 'Añade lo que ya tienes',
+    description: 'Parcelas, aplicadores, maquinaria... Lo registras una vez y ya está. No tendrás que volver a escribirlo en cada tratamiento.',
+  },
+  {
+    number: '03',
+    title: 'Registra cuando toque',
+    description: 'Cuando hagas un tratamiento o abonado, entras, lo registras en 2 minutos y sigues con tu trabajo. Sin papeleos.',
+  },
+]
+---
+
+<section id="como-funciona" class="py-20 sm:py-28 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="inline-flex items-center rounded-full bg-accent-100 px-4 py-1 text-sm font-medium text-accent-800">
+        Cómo funciona
+      </span>
+      <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Configura una vez, usa todo el año
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        La gracia es que no tengas que perder media mañana cada vez que registras algo.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="mt-16">
+      <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
+        {steps.map((step, index) => (
+          <div class="relative">
+            <!-- Número del paso -->
+            <div class="flex justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg">
+                <span class="text-xl font-bold">{step.number}</span>
+              </div>
+            </div>
+
+            <!-- Contenido -->
+            <div class="mt-6 text-center">
+              <h3 class="text-xl font-semibold text-gray-900">
+                {step.title}
+              </h3>
+              <p class="mt-3 text-gray-600 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,223 @@
+---
+const appUrl = 'https://app.cuaderno.es'
+
+const plans = [
+  {
+    name: 'Básico',
+    description: 'Para una explotación',
+    price: { monthly: 35, yearly: 348 },
+    features: [
+      '1 explotación',
+      '1 usuario',
+      'Tratamientos y fertilización',
+      'Parcelas SIGPAC',
+      'Exportación de informes',
+      'Soporte por email',
+    ],
+    notIncluded: [
+      'Avisos de vencimientos',
+      'Soporte prioritario',
+    ],
+    cta: 'Empezar prueba gratis',
+    popular: false,
+  },
+  {
+    name: 'Profesional',
+    description: 'El que elige la mayoría',
+    price: { monthly: 59, yearly: 588 },
+    features: [
+      'Hasta 3 explotaciones',
+      '1 usuario',
+      'Tratamientos y fertilización',
+      'Parcelas SIGPAC',
+      'Exportación de informes',
+      'Avisos de vencimientos',
+      'Eco-regímenes PAC',
+      'Soporte por email',
+    ],
+    notIncluded: [
+      'Soporte prioritario',
+    ],
+    cta: 'Empezar prueba gratis',
+    popular: true,
+  },
+  {
+    name: 'Enterprise',
+    description: 'Para asesorías y cooperativas',
+    price: { monthly: 95, yearly: 948 },
+    features: [
+      'Explotaciones ilimitadas',
+      'Hasta 5 usuarios',
+      'Tratamientos y fertilización',
+      'Parcelas SIGPAC',
+      'Exportación de informes',
+      'Avisos de vencimientos',
+      'Eco-regímenes PAC',
+      'Soporte prioritario',
+      'Ayuda en la configuración inicial',
+    ],
+    notIncluded: [],
+    cta: 'Empezar prueba gratis',
+    popular: false,
+  },
+]
+---
+
+<section id="precios" class="py-20 sm:py-28 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="inline-flex items-center rounded-full bg-primary-100 px-4 py-1 text-sm font-medium text-primary-800">
+        Precios
+      </span>
+      <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Precios claros, sin sorpresas
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Pruébalo 30 días gratis. Si no te convence, no pagas nada. Sin tarjeta de crédito.
+      </p>
+    </div>
+
+    <!-- Billing toggle -->
+    <div class="mt-10 flex justify-center items-center gap-4">
+      <span class="text-sm font-medium text-gray-600" id="monthly-label">Mensual</span>
+      <button
+        type="button"
+        id="billing-toggle"
+        class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2"
+        role="switch"
+        aria-checked="false"
+        aria-labelledby="annual-label"
+      >
+        <span class="sr-only">Cambiar a facturación anual</span>
+        <span
+          id="toggle-dot"
+          class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"
+        ></span>
+      </button>
+      <span class="text-sm font-medium text-gray-600" id="annual-label">
+        Anual
+        <span class="ml-1 inline-flex items-center rounded-full bg-accent-100 px-2 py-0.5 text-xs font-medium text-accent-800">
+          2 meses gratis
+        </span>
+      </span>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="mt-12 grid gap-8 lg:grid-cols-3">
+      {plans.map((plan) => (
+        <div class={`relative rounded-2xl border-2 ${plan.popular ? 'border-primary-600 shadow-xl' : 'border-gray-200'} bg-white p-8`}>
+          {/* Popular badge */}
+          {plan.popular && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center rounded-full bg-primary-600 px-4 py-1 text-sm font-semibold text-white">
+                Más popular
+              </span>
+            </div>
+          )}
+
+          {/* Plan header */}
+          <div class="text-center">
+            <h3 class="text-lg font-semibold text-gray-900">{plan.name}</h3>
+            <p class="mt-1 text-sm text-gray-500">{plan.description}</p>
+
+            {/* Price */}
+            <div class="mt-6">
+              <div class="flex items-baseline justify-center">
+                <span class="text-5xl font-bold tracking-tight text-gray-900 price-monthly">
+                  {plan.price.monthly}€
+                </span>
+                <span class="text-5xl font-bold tracking-tight text-gray-900 price-yearly hidden">
+                  {Math.round(plan.price.yearly / 12)}€
+                </span>
+                <span class="ml-1 text-sm text-gray-500">/mes</span>
+              </div>
+              <p class="mt-1 text-xs text-gray-500 yearly-savings hidden">
+                {plan.price.yearly}€ al año (ahorras {plan.price.monthly * 12 - plan.price.yearly}€)
+              </p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <a
+            href={`${appUrl}/register`}
+            class={`mt-8 block w-full rounded-lg py-3 px-4 text-center text-sm font-semibold transition-colors ${
+              plan.popular
+                ? 'bg-primary-600 text-white hover:bg-primary-700'
+                : 'bg-primary-100 text-primary-800 hover:bg-primary-200'
+            }`}
+          >
+            {plan.cta}
+          </a>
+
+          {/* Features */}
+          <ul class="mt-8 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg class="h-5 w-5 flex-shrink-0 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-gray-600">{feature}</span>
+              </li>
+            ))}
+            {plan.notIncluded.map((feature) => (
+              <li class="flex items-start gap-3 opacity-50">
+                <svg class="h-5 w-5 flex-shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span class="text-sm text-gray-500">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    {/* Garantía */}
+    <div class="mt-12 text-center">
+      <p class="text-sm text-gray-500">
+        <svg class="inline-block h-5 w-5 mr-1 text-accent-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        Si no te convence, cancelas y ya está. Sin preguntas ni complicaciones.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('billing-toggle')
+  const toggleDot = document.getElementById('toggle-dot')
+  const monthlyPrices = document.querySelectorAll('.price-monthly')
+  const yearlyPrices = document.querySelectorAll('.price-yearly')
+  const yearlySavings = document.querySelectorAll('.yearly-savings')
+
+  // Por defecto anual (más barato visualmente)
+  let isYearly = true
+
+  // Inicializar estado visual
+  toggle?.setAttribute('aria-checked', 'true')
+  toggle?.classList.add('bg-primary-600')
+  toggle?.classList.remove('bg-gray-200')
+  toggleDot?.classList.add('translate-x-5')
+  toggleDot?.classList.remove('translate-x-0')
+  monthlyPrices.forEach(el => el.classList.add('hidden'))
+  yearlyPrices.forEach(el => el.classList.remove('hidden'))
+  yearlySavings.forEach(el => el.classList.remove('hidden'))
+
+  toggle?.addEventListener('click', () => {
+    isYearly = !isYearly
+
+    // Toggle visual
+    toggle.setAttribute('aria-checked', isYearly.toString())
+    toggle.classList.toggle('bg-primary-600', isYearly)
+    toggle.classList.toggle('bg-gray-200', !isYearly)
+    toggleDot?.classList.toggle('translate-x-5', isYearly)
+    toggleDot?.classList.toggle('translate-x-0', !isYearly)
+
+    // Toggle prices
+    monthlyPrices.forEach(el => el.classList.toggle('hidden', isYearly))
+    yearlyPrices.forEach(el => el.classList.toggle('hidden', !isYearly))
+    yearlySavings.forEach(el => el.classList.toggle('hidden', !isYearly))
+  })
+</script>
