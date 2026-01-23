@@ -56,28 +56,35 @@ const plans = [
 ]
 ---
 
-<section id="precios" class="py-20 sm:py-28 bg-white">
+<section id="precios" class="relative py-24 sm:py-32 bg-gradient-to-b from-white via-primary-50/30 to-white overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary-100/50 to-transparent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent-100/30 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary-100/30 rounded-full blur-3xl"></div>
+  </div>
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="inline-flex items-center rounded-full bg-primary-100 px-4 py-1 text-sm font-medium text-primary-800">
+    <div class="text-center max-w-2xl mx-auto" data-animate>
+      <span class="inline-flex items-center rounded-full bg-gradient-to-r from-primary-100 to-primary-50 px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200/50">
         Precios
       </span>
-      <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         Precios claros
       </h2>
-      <p class="mt-4 text-lg text-gray-600">
+      <p class="mt-6 text-lg text-gray-600 leading-relaxed">
         30 días para probarlo. Sin tarjeta. Si no te convence, no pagas.
       </p>
     </div>
 
     <!-- Billing toggle -->
-    <div class="mt-10 flex justify-center items-center gap-4">
-      <span class="text-sm font-medium text-gray-600" id="monthly-label">Mensual</span>
+    <div class="mt-12 flex justify-center items-center gap-4" data-animate>
+      <span class="text-sm font-medium text-gray-500 transition-colors duration-300" id="monthly-label">Mensual</span>
       <button
         type="button"
         id="billing-toggle"
-        class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2"
+        class="relative inline-flex h-7 w-14 flex-shrink-0 cursor-pointer rounded-full bg-gray-200 p-0.5 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2"
         role="switch"
         aria-checked="false"
         aria-labelledby="annual-label"
@@ -85,92 +92,126 @@ const plans = [
         <span class="sr-only">Cambiar a facturación anual</span>
         <span
           id="toggle-dot"
-          class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"
-        ></span>
+          class="pointer-events-none relative inline-block h-6 w-6 transform rounded-full bg-white shadow-lg ring-0 transition-all duration-300 ease-in-out translate-x-0"
+        >
+          <!-- Inner glow -->
+          <span class="absolute inset-0 rounded-full bg-gradient-to-br from-white to-gray-100"></span>
+        </span>
       </button>
-      <span class="text-sm font-medium text-gray-600" id="annual-label">
+      <span class="flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors duration-300" id="annual-label">
         Anual
-        <span class="ml-1 inline-flex items-center rounded-full bg-accent-100 px-2 py-0.5 text-xs font-medium text-accent-800">
+        <span class="inline-flex items-center rounded-full bg-gradient-to-r from-accent-400 to-accent-500 px-2.5 py-1 text-xs font-bold text-white shadow-sm">
           -17%
         </span>
       </span>
     </div>
 
     <!-- Pricing cards -->
-    <div class="mt-12 grid gap-8 lg:grid-cols-3">
-      {plans.map((plan) => (
-        <div class={`relative rounded-2xl border-2 ${plan.popular ? 'border-primary-600 shadow-xl' : 'border-gray-200'} bg-white p-8`}>
-          {/* Popular badge */}
+    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+      {plans.map((plan, index) => (
+        <div
+          class="relative group"
+          data-animate
+          style={`transition-delay: ${index * 100}ms;`}
+        >
+          {/* Popular glow effect */}
           {plan.popular && (
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-              <span class="inline-flex items-center rounded-full bg-primary-600 px-4 py-1 text-sm font-semibold text-white">
-                Popular
-              </span>
-            </div>
+            <div class="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary-400 via-primary-500 to-accent-500 opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
           )}
 
-          {/* Plan header */}
-          <div class="text-center">
-            <h3 class="text-lg font-semibold text-gray-900">{plan.name}</h3>
-            <p class="mt-1 text-sm text-gray-500">{plan.description}</p>
-
-            {/* Price */}
-            <div class="mt-6">
-              <div class="flex items-baseline justify-center">
-                <span class="text-5xl font-bold tracking-tight text-gray-900 price-monthly">
-                  {plan.price.monthly}€
+          <div class={`relative h-full rounded-3xl bg-white p-8 transition-all duration-500 ${plan.popular ? 'shadow-2xl shadow-primary-900/20 ring-2 ring-primary-500' : 'shadow-xl shadow-gray-900/5 border border-gray-200/80 hover:border-primary-200 hover:shadow-2xl'} group-hover:-translate-y-2`}>
+            {/* Popular badge */}
+            {plan.popular && (
+              <div class="absolute -top-5 left-1/2 -translate-x-1/2">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-primary-600 to-primary-700 px-5 py-2 text-sm font-bold text-white shadow-lg shadow-primary-900/30">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  Popular
                 </span>
-                <span class="text-5xl font-bold tracking-tight text-gray-900 price-yearly hidden">
-                  {Math.round(plan.price.yearly / 12)}€
-                </span>
-                <span class="ml-1 text-sm text-gray-500">/mes</span>
               </div>
-              <p class="mt-1 text-xs text-gray-500 yearly-savings hidden">
-                {plan.price.yearly}€/año
+            )}
+
+            {/* Plan header */}
+            <div class="text-center pt-4">
+              <h3 class="text-xl font-bold text-gray-900">{plan.name}</h3>
+              <p class="mt-2 text-sm text-gray-500">{plan.description}</p>
+
+              {/* Price */}
+              <div class="mt-8 flex items-baseline justify-center">
+                <span class="text-5xl font-extrabold tracking-tight text-gray-900 price-monthly">
+                  {plan.price.monthly}
+                </span>
+                <span class="text-5xl font-extrabold tracking-tight text-gray-900 price-yearly hidden">
+                  {Math.round(plan.price.yearly / 12)}
+                </span>
+                <span class="ml-1 text-2xl font-medium text-gray-400">€</span>
+                <span class="ml-2 text-base font-medium text-gray-500">/mes</span>
+              </div>
+              <p class="mt-2 text-sm text-gray-400 yearly-savings hidden">
+                Facturado {plan.price.yearly}€/año
               </p>
             </div>
+
+            {/* CTA */}
+            <div class="mt-8">
+              <a
+                href={`${appUrl}/register`}
+                class={`group/btn relative block w-full rounded-2xl py-4 px-6 text-center text-base font-semibold transition-all duration-300 overflow-hidden ${
+                  plan.popular
+                    ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-900/30 hover:shadow-xl hover:shadow-primary-900/40 hover:-translate-y-0.5'
+                    : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
+                }`}
+              >
+                {/* Shine effect */}
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></span>
+                <span class="relative">{plan.cta}</span>
+              </a>
+            </div>
+
+            {/* Divider */}
+            <div class="my-8 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+
+            {/* Features */}
+            <ul class="space-y-4">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <div class={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${plan.popular ? 'bg-primary-100' : 'bg-gray-100'}`}>
+                    <svg class={`h-3 w-3 ${plan.popular ? 'text-primary-600' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <span class="text-sm text-gray-600">{feature}</span>
+                </li>
+              ))}
+              {plan.notIncluded.map((feature) => (
+                <li class="flex items-start gap-3 opacity-40">
+                  <div class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center">
+                    <svg class="h-3 w-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  <span class="text-sm text-gray-500">{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          {/* CTA */}
-          <a
-            href={`${appUrl}/register`}
-            class={`mt-8 block w-full rounded-lg py-3 px-4 text-center text-sm font-semibold transition-colors ${
-              plan.popular
-                ? 'bg-primary-600 text-white hover:bg-primary-700'
-                : 'bg-primary-100 text-primary-800 hover:bg-primary-200'
-            }`}
-          >
-            {plan.cta}
-          </a>
-
-          {/* Features */}
-          <ul class="mt-8 space-y-3">
-            {plan.features.map((feature) => (
-              <li class="flex items-start gap-3">
-                <svg class="h-5 w-5 flex-shrink-0 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-                <span class="text-sm text-gray-600">{feature}</span>
-              </li>
-            ))}
-            {plan.notIncluded.map((feature) => (
-              <li class="flex items-start gap-3 opacity-50">
-                <svg class="h-5 w-5 flex-shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span class="text-sm text-gray-500">{feature}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       ))}
     </div>
 
     {/* Garantía */}
-    <div class="mt-12 text-center">
-      <p class="text-sm text-gray-500">
-        Sin permanencia. Cancelas cuando quieras.
-      </p>
+    <div class="mt-16 text-center" data-animate>
+      <div class="inline-flex items-center gap-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-6 py-4 shadow-lg shadow-gray-900/5">
+        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-100">
+          <svg class="w-5 h-5 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <p class="text-sm text-gray-600">
+          <span class="font-semibold text-gray-900">Sin permanencia.</span> Cancelas cuando quieras.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -178,6 +219,8 @@ const plans = [
 <script>
   const toggle = document.getElementById('billing-toggle')
   const toggleDot = document.getElementById('toggle-dot')
+  const monthlyLabel = document.getElementById('monthly-label')
+  const annualLabel = document.getElementById('annual-label')
   const monthlyPrices = document.querySelectorAll('.price-monthly')
   const yearlyPrices = document.querySelectorAll('.price-yearly')
   const yearlySavings = document.querySelectorAll('.yearly-savings')
@@ -185,26 +228,27 @@ const plans = [
   let isYearly = true
 
   // Inicializar estado visual (anual por defecto)
-  toggle?.setAttribute('aria-checked', 'true')
-  toggle?.classList.add('bg-primary-600')
-  toggle?.classList.remove('bg-gray-200')
-  toggleDot?.classList.add('translate-x-5')
-  toggleDot?.classList.remove('translate-x-0')
-  monthlyPrices.forEach(el => el.classList.add('hidden'))
-  yearlyPrices.forEach(el => el.classList.remove('hidden'))
-  yearlySavings.forEach(el => el.classList.remove('hidden'))
-
-  toggle?.addEventListener('click', () => {
-    isYearly = !isYearly
-
-    toggle.setAttribute('aria-checked', isYearly.toString())
-    toggle.classList.toggle('bg-primary-600', isYearly)
-    toggle.classList.toggle('bg-gray-200', !isYearly)
-    toggleDot?.classList.toggle('translate-x-5', isYearly)
+  function updateToggleState() {
+    toggle?.setAttribute('aria-checked', isYearly.toString())
+    toggle?.classList.toggle('bg-primary-600', isYearly)
+    toggle?.classList.toggle('bg-gray-200', !isYearly)
+    toggleDot?.classList.toggle('translate-x-7', isYearly)
     toggleDot?.classList.toggle('translate-x-0', !isYearly)
+    monthlyLabel?.classList.toggle('text-gray-900', !isYearly)
+    monthlyLabel?.classList.toggle('text-gray-500', isYearly)
+    annualLabel?.classList.toggle('text-gray-900', isYearly)
+    annualLabel?.classList.toggle('text-gray-500', !isYearly)
 
     monthlyPrices.forEach(el => el.classList.toggle('hidden', isYearly))
     yearlyPrices.forEach(el => el.classList.toggle('hidden', !isYearly))
     yearlySavings.forEach(el => el.classList.toggle('hidden', !isYearly))
+  }
+
+  // Inicializar
+  updateToggleState()
+
+  toggle?.addEventListener('click', () => {
+    isYearly = !isYearly
+    updateToggleState()
   })
 </script>

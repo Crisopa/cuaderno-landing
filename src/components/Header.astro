@@ -10,66 +10,82 @@ const appUrl = 'https://app.cuaderno.es'
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
 >
+  <!-- Gradient line at top -->
+  <div class="h-1 w-full bg-gradient-to-r from-primary-600 via-primary-400 to-accent-500 opacity-0 transition-opacity duration-500" id="header-line"></div>
+
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
-      <a href="/logo" class="flex items-center gap-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8 text-primary-800"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z"/>
-          <path d="M11.99 22 14 12l7.822 3.184"/>
-          <path d="M14 12 8.47 2.302"/>
-        </svg>
-        <span class="font-logo text-xl font-bold text-gray-900">crisopa</span>
+      <a href="/logo" class="flex items-center gap-2.5 group">
+        <div class="relative">
+          <div class="absolute inset-0 bg-primary-500/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500"></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-9 w-9 text-primary-800 relative transition-transform duration-300 group-hover:scale-110"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z"/>
+            <path d="M11.99 22 14 12l7.822 3.184"/>
+            <path d="M14 12 8.47 2.302"/>
+          </svg>
+        </div>
+        <span class="font-logo text-xl font-bold text-gray-900 transition-colors group-hover:text-primary-800">crisopa</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex md:items-center md:gap-8">
+      <div class="hidden md:flex md:items-center md:gap-1">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="text-sm font-medium text-gray-600 hover:text-primary-800 transition-colors"
+            class="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary-800 transition-colors rounded-lg hover:bg-primary-50/50 group"
           >
-            {link.label}
+            <span class="relative z-10">{link.label}</span>
+            <span class="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-primary-500/0 via-primary-500/70 to-primary-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></span>
           </a>
         ))}
       </div>
 
-      <!-- CTA Button -->
-      <div class="flex items-center gap-4">
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-3">
         <a
           href={`${appUrl}/login`}
-          class="hidden sm:inline-flex text-sm font-medium text-gray-600 hover:text-primary-800 transition-colors"
+          class="hidden sm:inline-flex text-sm font-medium text-gray-600 hover:text-primary-800 transition-all px-4 py-2 rounded-lg hover:bg-primary-50/50"
         >
           Iniciar sesión
         </a>
         <a
           href={`${appUrl}/register`}
-          class="inline-flex items-center justify-center rounded-lg bg-primary-800 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-900 transition-colors"
+          class="group relative inline-flex items-center justify-center rounded-xl bg-primary-800 px-5 py-2.5 text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:bg-primary-900 hover:shadow-lg hover:shadow-primary-800/25 hover:-translate-y-0.5"
         >
-          Prueba gratis
+          <span class="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="relative flex items-center gap-2">
+            Prueba gratis
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
         </a>
 
         <!-- Mobile menu button -->
         <button
           id="mobile-menu-button"
           type="button"
-          class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-gray-600 hover:bg-gray-100"
+          class="md:hidden inline-flex items-center justify-center rounded-xl p-2.5 text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
           aria-expanded="false"
           aria-label="Abrir menú"
         >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -77,18 +93,18 @@ const appUrl = 'https://app.cuaderno.es'
 
     <!-- Mobile Navigation -->
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="space-y-1 pb-4 pt-2">
+      <div class="space-y-1 pb-4 pt-2 border-t border-gray-100/50 mt-2">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="block rounded-lg px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-primary-800"
+            class="block rounded-xl px-4 py-3 text-base font-medium text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
           >
             {link.label}
           </a>
         ))}
         <a
           href={`${appUrl}/login`}
-          class="block rounded-lg px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-primary-800"
+          class="block rounded-xl px-4 py-3 text-base font-medium text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
         >
           Iniciar sesión
         </a>
@@ -99,18 +115,25 @@ const appUrl = 'https://app.cuaderno.es'
 
 <script>
   const header = document.getElementById('header')
+  const headerLine = document.getElementById('header-line')
   const mobileMenuButton = document.getElementById('mobile-menu-button')
   const mobileMenu = document.getElementById('mobile-menu')
+  const menuIconOpen = document.getElementById('menu-icon-open')
+  const menuIconClose = document.getElementById('menu-icon-close')
 
-  // Sticky header con blur
+  // Sticky header con glassmorphism
   let lastScroll = 0
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY
 
     if (currentScroll > 10) {
-      header?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm')
+      header?.classList.add('bg-white/80', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5')
+      headerLine?.classList.add('opacity-100')
+      headerLine?.classList.remove('opacity-0')
     } else {
-      header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm')
+      header?.classList.remove('bg-white/80', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5')
+      headerLine?.classList.remove('opacity-100')
+      headerLine?.classList.add('opacity-0')
     }
 
     lastScroll = currentScroll
@@ -121,6 +144,8 @@ const appUrl = 'https://app.cuaderno.es'
     const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true'
     mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString())
     mobileMenu?.classList.toggle('hidden')
+    menuIconOpen?.classList.toggle('hidden')
+    menuIconClose?.classList.toggle('hidden')
   })
 
   // Cerrar menú al hacer click en un enlace
@@ -128,6 +153,8 @@ const appUrl = 'https://app.cuaderno.es'
     link.addEventListener('click', () => {
       mobileMenu.classList.add('hidden')
       mobileMenuButton?.setAttribute('aria-expanded', 'false')
+      menuIconOpen?.classList.remove('hidden')
+      menuIconClose?.classList.add('hidden')
     })
   })
 </script>

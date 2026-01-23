@@ -31,59 +31,94 @@ const faqs = [
 ]
 ---
 
-<section id="faq" class="py-20 sm:py-28 bg-gray-50">
+<section id="faq" class="relative py-24 sm:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-0 right-1/4 w-80 h-80 bg-primary-100/40 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/4 w-72 h-72 bg-accent-100/40 rounded-full blur-3xl"></div>
+    <!-- Subtle dots pattern -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[size:24px_24px]"></div>
+  </div>
+
   <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-center">
-      <span class="inline-flex items-center rounded-full bg-primary-100 px-4 py-1 text-sm font-medium text-primary-800">
+    <div class="text-center" data-animate>
+      <span class="inline-flex items-center rounded-full bg-gradient-to-r from-primary-100 to-primary-50 px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200/50">
         Dudas
       </span>
-      <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         Preguntas frecuentes
       </h2>
     </div>
 
     <!-- FAQ Accordion -->
-    <div class="mt-12 space-y-4">
+    <div class="mt-16 space-y-4">
       {faqs.map((faq, index) => (
-        <div class="faq-item rounded-xl border border-gray-200 bg-white overflow-hidden">
-          <button
-            type="button"
-            class="faq-button flex w-full items-center justify-between px-6 py-5 text-left"
-            aria-expanded="false"
-            aria-controls={`faq-content-${index}`}
-          >
-            <span class="text-base font-medium text-gray-900 pr-4">{faq.question}</span>
-            <svg
-              class="faq-icon h-5 w-5 flex-shrink-0 text-gray-500 transition-transform duration-200"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        <div
+          class="faq-item group"
+          data-animate
+          style={`transition-delay: ${index * 50}ms;`}
+        >
+          <div class="relative rounded-2xl bg-white border border-gray-200/80 overflow-hidden transition-all duration-300 hover:border-primary-200 hover:shadow-lg hover:shadow-primary-900/5">
+            <button
+              type="button"
+              class="faq-button flex w-full items-center justify-between px-6 py-5 text-left transition-colors duration-300 hover:bg-primary-50/50"
+              aria-expanded="false"
+              aria-controls={`faq-content-${index}`}
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div
-            id={`faq-content-${index}`}
-            class="faq-content hidden px-6 pb-5"
-          >
-            <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              <span class="text-base font-semibold text-gray-900 pr-4 group-hover:text-primary-800 transition-colors">
+                {faq.question}
+              </span>
+              <div class="flex-shrink-0 ml-4">
+                <div class="faq-icon-wrapper w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary-100 flex items-center justify-center transition-all duration-300">
+                  <svg
+                    class="faq-icon h-4 w-4 text-gray-500 group-hover:text-primary-600 transition-all duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </button>
+            <div
+              id={`faq-content-${index}`}
+              class="faq-content overflow-hidden transition-all duration-300 ease-out"
+              style="max-height: 0; opacity: 0;"
+            >
+              <div class="px-6 pb-5 pt-0">
+                <div class="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4"></div>
+                <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
           </div>
         </div>
       ))}
     </div>
 
     <!-- Contact CTA -->
-    <div class="mt-12 text-center">
-      <p class="text-gray-600">
-        ¿Otra duda?
+    <div class="mt-16 text-center" data-animate>
+      <div class="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-8 py-6 shadow-lg shadow-gray-900/5">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary-100 to-primary-50">
+            <svg class="w-6 h-6 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+            </svg>
+          </div>
+          <span class="text-gray-600">¿Otra duda?</span>
+        </div>
         <a
           href="mailto:hola@crisopa.es"
-          class="ml-1 text-primary-700 hover:text-primary-800 font-medium"
+          class="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold transition-all duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-900/25 hover:-translate-y-0.5"
         >
-          Escríbenos
+          <span>Escríbenos</span>
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
         </a>
-      </p>
+      </div>
     </div>
   </div>
 </section>
@@ -93,29 +128,56 @@ const faqs = [
 
   faqItems.forEach(item => {
     const button = item.querySelector('.faq-button')
-    const content = item.querySelector('.faq-content')
+    const content = item.querySelector('.faq-content') as HTMLElement
     const icon = item.querySelector('.faq-icon')
+    const iconWrapper = item.querySelector('.faq-icon-wrapper')
 
     button?.addEventListener('click', () => {
       const isExpanded = button.getAttribute('aria-expanded') === 'true'
 
-      // Cerrar otros items
+      // Cerrar otros items con animación
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           const otherButton = otherItem.querySelector('.faq-button')
-          const otherContent = otherItem.querySelector('.faq-content')
+          const otherContent = otherItem.querySelector('.faq-content') as HTMLElement
           const otherIcon = otherItem.querySelector('.faq-icon')
+          const otherIconWrapper = otherItem.querySelector('.faq-icon-wrapper')
 
           otherButton?.setAttribute('aria-expanded', 'false')
-          otherContent?.classList.add('hidden')
+          if (otherContent) {
+            otherContent.style.maxHeight = '0'
+            otherContent.style.opacity = '0'
+          }
           otherIcon?.classList.remove('rotate-180')
+          otherIconWrapper?.classList.remove('bg-primary-600')
+          otherIconWrapper?.classList.add('bg-gray-100', 'group-hover:bg-primary-100')
+          otherIcon?.classList.remove('text-white')
+          otherIcon?.classList.add('text-gray-500', 'group-hover:text-primary-600')
         }
       })
 
-      // Toggle current item
+      // Toggle current item con animación suave
       button.setAttribute('aria-expanded', (!isExpanded).toString())
-      content?.classList.toggle('hidden', isExpanded)
-      icon?.classList.toggle('rotate-180', !isExpanded)
+
+      if (!isExpanded) {
+        // Opening
+        content.style.maxHeight = content.scrollHeight + 'px'
+        content.style.opacity = '1'
+        icon?.classList.add('rotate-180')
+        iconWrapper?.classList.remove('bg-gray-100', 'group-hover:bg-primary-100')
+        iconWrapper?.classList.add('bg-primary-600')
+        icon?.classList.remove('text-gray-500', 'group-hover:text-primary-600')
+        icon?.classList.add('text-white')
+      } else {
+        // Closing
+        content.style.maxHeight = '0'
+        content.style.opacity = '0'
+        icon?.classList.remove('rotate-180')
+        iconWrapper?.classList.add('bg-gray-100', 'group-hover:bg-primary-100')
+        iconWrapper?.classList.remove('bg-primary-600')
+        icon?.classList.add('text-gray-500', 'group-hover:text-primary-600')
+        icon?.classList.remove('text-white')
+      }
     })
   })
 </script>

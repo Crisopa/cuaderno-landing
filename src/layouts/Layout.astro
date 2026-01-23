@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
   title?: string
@@ -34,8 +35,42 @@ const {
     <meta name="twitter:description" content={description} />
 
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body class="font-sans antialiased text-gray-900 bg-white">
+  <body class="font-sans antialiased text-gray-900 bg-white overflow-x-hidden">
     <slot />
+
+    <!-- Intersection Observer for scroll animations -->
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated')
+            // Optionally stop observing after animation
+            // observer.unobserve(entry.target)
+          }
+        })
+      }, observerOptions)
+
+      // Observe all elements with data-animate attribute
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-animate]').forEach(el => {
+          observer.observe(el)
+        })
+      })
+
+      // Re-observe after view transitions
+      document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('[data-animate]').forEach(el => {
+          observer.observe(el)
+        })
+      })
+    </script>
   </body>
 </html>
