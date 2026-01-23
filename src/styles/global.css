@@ -35,7 +35,8 @@
 
 @theme {
   /* Tipografía */
-  --font-sans: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
   --font-logo: 'Sora', ui-sans-serif, system-ui, sans-serif;
 
   /* Escala verde sage - color principal */
@@ -389,6 +390,11 @@ html {
 *:focus-visible {
   outline: 2px solid var(--green-600);
   outline-offset: 2px;
+}
+
+/* Headings usan Sora */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ========================================
