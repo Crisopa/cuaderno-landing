@@ -16,22 +16,23 @@ const appUrl = 'https://app.cuaderno.es'
         <!-- Badge -->
         <div class="mb-6">
           <span class="inline-flex items-center gap-2 rounded-full bg-accent-100 px-4 py-1.5 text-sm font-medium text-accent-800">
-            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-            </svg>
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-600"></span>
+            </span>
             Obligatorio desde 2025
           </span>
         </div>
 
         <!-- Headline -->
         <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-          El cuaderno digital
-          <span class="text-primary-800">que no te complica la vida</span>
+          Tu cuaderno de campo.
+          <span class="text-primary-800">Siempre al día.</span>
         </h1>
 
         <!-- Subheadline -->
         <p class="mt-6 text-lg leading-8 text-gray-600 sm:text-xl">
-          Sí, el cuaderno de explotación digital es obligatorio. No, no tienes que sufrir con la aplicación del Ministerio. Registra tratamientos, parcelas y fertilización en minutos, no en horas.
+          Registra tratamientos, parcelas y fertilización en minutos. Todo organizado, siempre a mano, listo para cualquier inspección.
         </p>
 
         <!-- CTAs -->
@@ -40,7 +41,7 @@ const appUrl = 'https://app.cuaderno.es'
             href={`${appUrl}/register`}
             class="inline-flex items-center justify-center rounded-lg bg-primary-800 px-6 py-3.5 text-base font-semibold text-white shadow-lg hover:bg-primary-900 transition-all hover:shadow-xl hover:-translate-y-0.5"
           >
-            Probar 30 días gratis
+            Prueba gratis
             <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -54,24 +55,24 @@ const appUrl = 'https://app.cuaderno.es'
         </div>
 
         <!-- Trust indicators -->
-        <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-gray-500">
+        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-gray-500">
           <div class="flex items-center gap-2">
-            <svg class="h-5 w-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="h-4 w-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            Sin tarjeta de crédito
+            30 días gratis
           </div>
           <div class="flex items-center gap-2">
-            <svg class="h-5 w-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="h-4 w-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            Listo en 5 minutos
+            Sin tarjeta
           </div>
           <div class="flex items-center gap-2">
-            <svg class="h-5 w-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="h-4 w-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            100% válido para inspecciones
+            Válido para inspecciones
           </div>
         </div>
       </div>
@@ -79,14 +80,15 @@ const appUrl = 'https://app.cuaderno.es'
       <!-- Imagen/Mockup -->
       <div class="mt-12 lg:mt-0 lg:col-span-6">
         <div class="relative">
-          <!-- Mockup placeholder - reemplazar con imagen real -->
+          <!-- Mockup placeholder -->
           <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 shadow-2xl overflow-hidden border border-primary-200">
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="text-center p-8">
                 <div class="mx-auto w-16 h-16 rounded-xl bg-primary-800 flex items-center justify-center mb-4">
                   <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z"/>
+                    <path d="M11.99 22 14 12l7.822 3.184"/>
+                    <path d="M14 12 8.47 2.302"/>
                   </svg>
                 </div>
                 <p class="text-primary-800 font-medium">Vista previa de la aplicación</p>

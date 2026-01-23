@@ -1,43 +1,43 @@
 ---
 const features = [
   {
-    title: 'Tratamientos fitosanitarios',
-    description: 'Registra producto, dosis, aplicador y maquinaria en un formulario. Sin tener que buscar qué campos son obligatorios.',
+    title: 'Tratamientos',
+    description: 'Producto, dosis, aplicador, maquinaria. Un formulario. Sin buscar qué es obligatorio.',
     icon: 'spray',
   },
   {
     title: 'Parcelas SIGPAC',
-    description: 'Añade tus parcelas con sus referencias y olvídate. No tendrás que volver a escribir provincia-municipio-polígono-parcela-recinto.',
+    description: 'Añade tus parcelas una vez. No vuelvas a escribir provincia-municipio-polígono-parcela-recinto.',
     icon: 'map',
   },
   {
     title: 'Fertilización',
-    description: 'Registra tus abonados y el sistema calcula las Unidades Fertilizantes automáticamente. Tú pones kilos, nosotros hacemos las cuentas.',
+    description: 'Pones kilos. Calculamos Unidades Fertilizantes. Así de simple.',
     icon: 'plant',
   },
   {
-    title: 'Aplicadores y carnés',
-    description: 'Guarda los datos de tus aplicadores una vez. Cuando registres un tratamiento, solo tienes que seleccionarlos de la lista.',
+    title: 'Aplicadores',
+    description: 'Guarda los datos una vez. Después, solo selecciona de la lista.',
     icon: 'user',
   },
   {
     title: 'Maquinaria',
-    description: 'Registra tus equipos de aplicación con sus fechas de inspección ITEAF. Te avisamos antes de que caduquen.',
+    description: 'Equipos con fechas ITEAF. Te avisamos antes de que caduquen.',
     icon: 'tractor',
   },
   {
-    title: 'Control de riego',
-    description: 'Si necesitas registrar riegos, aquí los tienes. Simple: parcela, fecha, sistema y volumen.',
+    title: 'Riegos',
+    description: 'Parcela, fecha, sistema, volumen. Nada más.',
     icon: 'water',
   },
   {
-    title: 'Eco-regímenes PAC',
-    description: 'Lleva el seguimiento de las prácticas que te dan derecho a ayudas. Todo en el mismo sitio.',
+    title: 'Eco-regímenes',
+    description: 'Seguimiento de prácticas PAC. Todo en el mismo sitio.',
     icon: 'leaf',
   },
   {
-    title: 'Varias explotaciones',
-    description: 'Si gestionas más de una explotación (o eres asesor), no necesitas varias cuentas. Todo desde el mismo panel.',
+    title: 'Multiexplotación',
+    description: 'Varias fincas o eres asesor. Una cuenta, todo controlado.',
     icon: 'buildings',
   },
 ]
@@ -57,20 +57,20 @@ const iconPaths: Record<string, string> = {
 <section id="caracteristicas" class="py-20 sm:py-28 bg-white">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto">
       <span class="inline-flex items-center rounded-full bg-primary-100 px-4 py-1 text-sm font-medium text-primary-800">
         Qué incluye
       </span>
       <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-        Todo lo que te piden, sin el dolor de cabeza
+        Lo que te piden. Sin el dolor de cabeza.
       </h2>
       <p class="mt-4 text-lg text-gray-600">
-        Rellenar el cuaderno ya es bastante pesado. Al menos que la herramienta no te lo ponga más difícil.
+        Rellenar el cuaderno ya es bastante. Que la herramienta no lo complique más.
       </p>
     </div>
 
     <!-- Features Grid -->
-    <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {features.map((feature) => (
         <div class="group relative rounded-2xl border border-gray-200 bg-white p-6 hover:border-primary-300 hover:shadow-lg transition-all duration-300">
           <!-- Icon -->
