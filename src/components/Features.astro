@@ -80,8 +80,9 @@ const iconPaths: Record<string, string> = {
     <div class="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {features.map((feature, index) => (
         <div
-          class="group relative rounded-2xl bg-white p-7 border border-gray-200 shadow-sm transition-all duration-500 hover:border-primary-200 hover:shadow-xl hover:-translate-y-2"
+          class="group relative rounded-2xl bg-white p-7 border border-gray-200 shadow-sm shadow-gray-900/5 transition-all duration-500 hover:border-primary-200 hover:shadow-xl hover:shadow-primary-900/10 hover:-translate-y-2"
           data-animate
+          style={`transition-delay: ${index * 100}ms;`}
         >
           <!-- Icon -->
           <div class="mb-5">

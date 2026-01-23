@@ -4,29 +4,27 @@ const appUrl = 'https://app.cuaderno.es'
 const plans = [
   {
     name: 'Básico',
-    description: 'Una explotación',
-    price: { monthly: 35, yearly: 348 },
+    description: 'Para empezar',
+    price: { monthly: 29, yearly: 290 },
     features: [
-      '1 explotación',
-      '1 usuario',
+      '1 técnico',
+      'Hasta 5 explotaciones',
       'Tratamientos y fertilización',
       'Parcelas SIGPAC',
       'Informes PDF',
       'Soporte por email',
     ],
-    notIncluded: [
-      'Avisos de vencimientos',
-    ],
+    notIncluded: [],
     cta: 'Prueba gratis',
     popular: false,
   },
   {
     name: 'Profesional',
     description: 'El más elegido',
-    price: { monthly: 59, yearly: 588 },
+    price: { monthly: 59, yearly: 590 },
     features: [
-      'Hasta 3 explotaciones',
-      '1 usuario',
+      '3 técnicos',
+      '20 explotaciones',
       'Tratamientos y fertilización',
       'Parcelas SIGPAC',
       'Informes PDF',
@@ -39,12 +37,12 @@ const plans = [
     popular: true,
   },
   {
-    name: 'Enterprise',
+    name: 'Cooperativa',
     description: 'Asesorías y cooperativas',
-    price: { monthly: 95, yearly: 948 },
+    price: { monthly: 99, yearly: 990 },
     features: [
+      '5 técnicos',
       'Explotaciones ilimitadas',
-      'Hasta 5 usuarios',
       'Todo lo del plan Profesional',
       'Soporte prioritario',
       'Ayuda en la configuración',
