@@ -98,32 +98,132 @@ const faqs = [
       ))}
     </div>
 
-    <!-- Contact CTA -->
+    <!-- Contact CTA - Te llamamos -->
     <div class="mt-16 text-center" data-animate>
-      <div class="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-8 py-6 shadow-lg shadow-gray-900/5">
-        <div class="flex items-center gap-3">
-          <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary-100 to-primary-50">
-            <svg class="w-6 h-6 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+      <div id="callback-container" class="inline-flex flex-col items-center gap-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-8 py-6 shadow-lg shadow-gray-900/5 transition-all duration-500">
+        <!-- Header con icono -->
+        <div id="callback-header" class="flex items-center gap-3 transition-all duration-300">
+          <div id="callback-icon" class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary-100 to-primary-50 transition-all duration-500">
+            <svg id="phone-icon" class="w-6 h-6 text-primary-700 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            <svg id="check-icon" class="w-6 h-6 text-green-600 hidden transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <span class="text-gray-600">¿Otra duda?</span>
+          <span id="callback-text" class="text-gray-600 transition-all duration-300">¿Otra duda? Te llamamos</span>
         </div>
-        <a
-          href="mailto:hola@crisopa.es"
-          class="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold transition-all duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-900/25 hover:-translate-y-0.5"
-        >
-          <span>Escríbenos</span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
+        <!-- Formulario -->
+        <form id="callback-form" class="flex flex-col sm:flex-row items-center gap-3 w-full transition-all duration-300 overflow-hidden">
+          <input
+            type="tel"
+            name="phone"
+            id="callback-phone"
+            placeholder="Tu teléfono"
+            required
+            class="w-full sm:w-auto px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-400 outline-none"
+          />
+          <button
+            type="submit"
+            id="callback-btn"
+            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold transition-all duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-900/25 hover:-translate-y-0.5"
+          >
+            <span>Te llamamos</span>
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+          </button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
+<style>
+  #callback-phone:-webkit-autofill,
+  #callback-phone:-webkit-autofill:hover,
+  #callback-phone:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111827 !important;
+    border-color: #e5e7eb !important;
+  }
+</style>
+
 <script>
+  // Callback form handling
+  const callbackForm = document.getElementById('callback-form') as HTMLFormElement
+  const callbackContainer = document.getElementById('callback-container')
+  const callbackIcon = document.getElementById('callback-icon')
+  const phoneIcon = document.getElementById('phone-icon')
+  const checkIcon = document.getElementById('check-icon')
+  const callbackText = document.getElementById('callback-text')
+  const phoneInput = document.getElementById('callback-phone') as HTMLInputElement
+
+  // Validar teléfono: acepta +34, espacios, guiones, paréntesis
+  function validatePhone(phone: string): boolean {
+    // Limpiar: quitar espacios, guiones, paréntesis, +34
+    const cleaned = phone.replace(/[\s\-\(\)\+]/g, '').replace(/^34/, '')
+    // Debe tener 9 dígitos
+    return /^[0-9]{9}$/.test(cleaned)
+  }
+
+  // Limpiar teléfono para guardar
+  function cleanPhone(phone: string): string {
+    return phone.replace(/[\s\-\(\)\+]/g, '').replace(/^34/, '')
+  }
+
+  callbackForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const phone = phoneInput.value
+
+    if (!validatePhone(phone)) {
+      phoneInput.classList.add('border-red-400')
+      phoneInput.classList.remove('border-gray-200')
+      return
+    }
+
+    const cleanedPhone = cleanPhone(phone)
+
+    // TODO: Enviar a tu backend/API
+    console.log('Callback solicitado:', cleanedPhone)
+
+    // Animación de éxito
+    // 1. Fade out del formulario
+    callbackForm.style.opacity = '0'
+    callbackForm.style.maxHeight = '0'
+    callbackForm.style.marginTop = '0'
+
+    // 2. Cambiar icono y texto
+    setTimeout(() => {
+      // Cambiar colores del contenedor
+      callbackContainer?.classList.remove('border-gray-200/50')
+      callbackContainer?.classList.add('border-green-200/50')
+
+      // Cambiar icono
+      callbackIcon?.classList.remove('from-primary-100', 'to-primary-50')
+      callbackIcon?.classList.add('from-green-100', 'to-green-50')
+      phoneIcon?.classList.add('hidden')
+      checkIcon?.classList.remove('hidden')
+
+      // Cambiar texto
+      if (callbackText) {
+        callbackText.textContent = 'Te llamamos pronto'
+        callbackText.classList.remove('text-gray-600')
+        callbackText.classList.add('text-gray-700', 'font-medium')
+      }
+
+      // Ocultar formulario completamente
+      callbackForm.style.display = 'none'
+    }, 300)
+  })
+
+  // Quitar error al escribir
+  phoneInput?.addEventListener('input', () => {
+    phoneInput.classList.remove('border-red-400')
+    phoneInput.classList.add('border-gray-200')
+  })
+
+  // FAQ accordion
   const faqItems = document.querySelectorAll('.faq-item')
 
   faqItems.forEach(item => {

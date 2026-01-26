@@ -1,0 +1,145 @@
+---
+const without = [
+  'Media mañana pegado a la pantalla para guardar 3 tratamientos',
+  'Excel interminables y fórmulas rotas',
+  'Software enrevesado y tedioso de usar',
+  'Horas revisando dosis y fichas de producto',
+  'Estrés cada vez que viene el inspector',
+];
+
+const withCrisopa = [
+  'Todo en la nube, accesible para técnicos y agricultores',
+  'Registro en 2 minutos, sin complicaciones',
+  'Interfaz optimizada para ser rápida y sencilla',
+  'Validación automática con nuestro agente de IA',
+  'Inspecciones sin sorpresas',
+];
+---
+
+<section id='comparativa' class='relative py-24 sm:py-32 overflow-hidden'>
+  <!-- Background -->
+  <div class='absolute inset-0 -z-10'>
+    <div
+      class='absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white'
+    >
+    </div>
+  </div>
+
+  <div class='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8'>
+    <!-- Header -->
+    <div class='text-center max-w-2xl mx-auto mb-16' data-animate>
+      <h2
+        class='font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900'
+      >
+        Deja atrás el papeleo
+      </h2>
+    </div>
+
+    <!-- Comparison -->
+    <div class='grid md:grid-cols-2 gap-6 lg:gap-8'>
+      <!-- Without -->
+      <div
+        class='relative p-8 rounded-2xl bg-gray-100 border border-gray-200'
+        data-animate
+        style="transition-delay: 100ms;"
+      >
+        <div class='absolute -top-4 left-8'>
+          <span
+            class='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-200 text-gray-600 text-sm font-medium'
+          >
+            <svg
+              class='w-4 h-4'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+              stroke-width='2'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                d='M6 18L18 6M6 6l12 12'></path>
+            </svg>
+            Sin Crisopa
+          </span>
+        </div>
+
+        <ul class='mt-4 space-y-4'>
+          {
+            without.map((item) => (
+              <li class='flex items-start gap-3'>
+                <span class='flex-shrink-0 w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center mt-0.5'>
+                  <svg
+                    class='w-3.5 h-3.5 text-gray-500'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                    stroke-width='2'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M6 18L18 6M6 6l12 12'
+                    />
+                  </svg>
+                </span>
+                <span class='text-gray-600'>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- With Crisopa -->
+      <div
+        class='relative p-8 rounded-2xl bg-primary-600 border border-primary-500 shadow-xl shadow-primary-600/20'
+        data-animate
+        style="transition-delay: 250ms;"
+      >
+        <div class='absolute -top-4 left-8'>
+          <span
+            class='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-primary-700 text-sm font-semibold shadow-lg shadow-primary-900/20 border-2 border-primary-200'
+          >
+            <svg
+              class='w-4 h-4'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+              stroke-width='2.5'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                d='M5 13l4 4L19 7'></path>
+            </svg>
+            Con Crisopa
+          </span>
+        </div>
+
+        <ul class='mt-4 space-y-4'>
+          {
+            withCrisopa.map((item) => (
+              <li class='flex items-start gap-3'>
+                <span class='flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mt-0.5'>
+                  <svg
+                    class='w-3.5 h-3.5 text-white'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                    stroke-width='2.5'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      d='M5 13l4 4L19 7'
+                    />
+                  </svg>
+                </span>
+                <span class='text-white'>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
