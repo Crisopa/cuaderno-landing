@@ -167,8 +167,8 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 20px rgba(var(--green-500), 0.3); }
-  to { box-shadow: 0 0 40px rgba(var(--green-500), 0.6); }
+  from { box-shadow: 0 0 20px oklch(0.578 0.112 165 / 0.3); }
+  to { box-shadow: 0 0 40px oklch(0.578 0.112 165 / 0.6); }
 }
 
 @keyframes bounce-soft {
@@ -226,6 +226,224 @@
 
 .animate-on-scroll.is-visible {
   opacity: 1;
+}
+
+/* ========================================
+   GRAIN / NOISE TEXTURE OVERLAY
+   ======================================== */
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* ========================================
+   BLUR-REVEAL TEXT ANIMATION
+   ======================================== */
+
+@keyframes blur-reveal {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-blur-reveal {
+  animation: blur-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ========================================
+   GLOW PULSE FOR CTAs
+   ======================================== */
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px oklch(0.488 0.107 165 / 0.25), 0 0 60px oklch(0.488 0.107 165 / 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px oklch(0.488 0.107 165 / 0.4), 0 0 80px oklch(0.488 0.107 165 / 0.15);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ========================================
+   ROTATING GRADIENT BORDER (conic)
+   ======================================== */
+
+@keyframes spin-gradient {
+  from { --gradient-angle: 0deg; }
+  to { --gradient-angle: 360deg; }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gradient-border-animated {
+  position: relative;
+  border-radius: 1.5rem;
+  background: white;
+}
+
+.gradient-border-animated::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(1.5rem + 2px);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--green-400),
+    var(--amber-400),
+    var(--green-600),
+    var(--green-400)
+  );
+  z-index: -1;
+  animation: spin-gradient 4s linear infinite;
+}
+
+/* ========================================
+   ANIMATED UNDERLINE HIGHLIGHT
+   ======================================== */
+
+.animated-underline {
+  position: relative;
+  display: inline;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--green-500), var(--amber-400), var(--green-500));
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* ========================================
+   STAGGER WITH BLUR (for data-animate="stagger")
+   ======================================== */
+
+[data-animate="stagger"] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animate="stagger"].animated > * {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+[data-animate="stagger"] > *:nth-child(1) { transition-delay: 0ms; }
+[data-animate="stagger"] > *:nth-child(2) { transition-delay: 80ms; }
+[data-animate="stagger"] > *:nth-child(3) { transition-delay: 160ms; }
+[data-animate="stagger"] > *:nth-child(4) { transition-delay: 240ms; }
+[data-animate="stagger"] > *:nth-child(5) { transition-delay: 320ms; }
+[data-animate="stagger"] > *:nth-child(6) { transition-delay: 400ms; }
+
+/* ========================================
+   LINE GROW ANIMATION
+   ======================================== */
+
+@keyframes line-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+[data-animate="line-grow"] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animate="line-grow"].animated {
+  transform: scaleX(1);
+}
+
+/* ========================================
+   WAVE SECTION DIVIDER
+   ======================================== */
+
+.wave-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  display: block;
+  width: calc(100% + 2px);
+  position: relative;
+  left: -1px;
+}
+
+.wave-divider-top {
+  top: -1px;
+}
+
+.wave-divider-bottom {
+  bottom: -1px;
+}
+
+/* ========================================
+   CARD TILT ON HOVER (CSS only)
+   ======================================== */
+
+.card-hover-tilt {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.card-hover-tilt:hover {
+  transform: perspective(800px) rotateX(2deg) rotateY(-1deg) translateY(-8px) scale(1.01);
+  box-shadow:
+    0 30px 60px -15px rgba(0, 0, 0, 0.12),
+    0 0 0 1px oklch(0.578 0.112 165 / 0.08);
+}
+
+/* ========================================
+   NUMBER COUNTER (JS driven)
+   ======================================== */
+
+.counter-number {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  min-width: 2ch;
 }
 
 /* ========================================
@@ -357,7 +575,12 @@
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(var(--green-800), 0.3);
+  box-shadow: 0 10px 30px oklch(0.348 0.082 165 / 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
 }
 
 /* ========================================
@@ -404,12 +627,16 @@ h1, h2, h3, h4, h5, h6 {
 [data-animate] {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  filter: blur(4px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-animate].animated {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 [data-animate="fade"] {
