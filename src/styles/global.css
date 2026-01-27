@@ -6,18 +6,18 @@
    ======================================== */
 
 :root {
-  /* ESCALA VERDE SAGE (50-950) - Más saturado para mejor visibilidad */
-  --green-50: oklch(0.97 0.02 145);
-  --green-100: oklch(0.93 0.04 145);
-  --green-200: oklch(0.87 0.06 145);
-  --green-300: oklch(0.78 0.08 145);
-  --green-400: oklch(0.68 0.10 145);
-  --green-500: oklch(0.58 0.11 145);
-  --green-600: oklch(0.50 0.10 145);
-  --green-700: oklch(0.43 0.09 145);
-  --green-800: oklch(0.36 0.07 145);
-  --green-900: oklch(0.29 0.06 145);
-  --green-950: oklch(0.22 0.04 145);
+  /* ESCALA VERDE BOSQUE FRÍO (50-950) - Consistente con la app */
+  --green-50:  oklch(0.975 0.015 165);
+  --green-100: oklch(0.938 0.032 165);
+  --green-200: oklch(0.878 0.052 165);
+  --green-300: oklch(0.788 0.078 165);
+  --green-400: oklch(0.688 0.102 165);
+  --green-500: oklch(0.578 0.112 165);
+  --green-600: oklch(0.488 0.107 165);
+  --green-700: oklch(0.418 0.097 165);
+  --green-800: oklch(0.348 0.082 165);
+  --green-900: oklch(0.278 0.062 165);
+  --green-950: oklch(0.198 0.042 165);
 
   /* ESCALA ÁMBAR (50-950) */
   --amber-50: oklch(0.988 0.014 84);

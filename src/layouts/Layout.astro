@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css'
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 
 interface Props {
   title?: string
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  title = 'Cuaderno - Gestión digital de explotaciones agrícolas',
+  title = 'Gestión digital de explotaciones agrícolas',
   description = 'Software de cuaderno de explotación agrícola conforme al RD 1311/2012. Gestiona tratamientos fitosanitarios, parcelas SIGPAC, fertilización y más.'
 } = Astro.props
 ---
@@ -35,7 +35,7 @@ const {
     <meta name="twitter:description" content={description} />
 
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="font-sans antialiased text-gray-900 bg-white overflow-x-hidden">
     <slot />
