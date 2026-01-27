@@ -110,19 +110,29 @@ const faqs = [
           <span id="callback-text" class="text-gray-600 transition-all duration-300">¿Otra duda? Te llamamos</span>
         </div>
         <!-- Formulario -->
-        <form id="callback-form" class="flex flex-col sm:flex-row items-center gap-3 w-full transition-all duration-300 overflow-hidden">
-          <input
-            type="tel"
-            name="phone"
-            id="callback-phone"
-            placeholder="Tu teléfono"
-            required
-            class="w-full sm:w-auto px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-400 outline-none"
-          />
+        <form id="callback-form" class="flex flex-col gap-3 w-full max-w-sm transition-all duration-300 overflow-hidden">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              name="name"
+              id="callback-name"
+              placeholder="Tu nombre"
+              required
+              class="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-400 outline-none"
+            />
+            <input
+              type="tel"
+              name="phone"
+              id="callback-phone"
+              placeholder="Tu teléfono"
+              required
+              class="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 placeholder-gray-400 outline-none"
+            />
+          </div>
           <button
             type="submit"
             id="callback-btn"
-            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold transition-all duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-900/25 hover:-translate-y-0.5"
+            class="group w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold transition-all duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-900/25 hover:-translate-y-0.5"
           >
             <span>Te llamamos</span>
             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -136,6 +146,9 @@ const faqs = [
 </section>
 
 <style>
+  #callback-name:-webkit-autofill,
+  #callback-name:-webkit-autofill:hover,
+  #callback-name:-webkit-autofill:focus,
   #callback-phone:-webkit-autofill,
   #callback-phone:-webkit-autofill:hover,
   #callback-phone:-webkit-autofill:focus {
@@ -153,6 +166,7 @@ const faqs = [
   const phoneIcon = document.getElementById('phone-icon')
   const checkIcon = document.getElementById('check-icon')
   const callbackText = document.getElementById('callback-text')
+  const nameInput = document.getElementById('callback-name') as HTMLInputElement
   const phoneInput = document.getElementById('callback-phone') as HTMLInputElement
 
   // Validar teléfono: acepta +34, espacios, guiones, paréntesis
@@ -170,18 +184,32 @@ const faqs = [
 
   callbackForm?.addEventListener('submit', async (e) => {
     e.preventDefault()
+    const name = nameInput.value.trim()
     const phone = phoneInput.value
+
+    if (!name) {
+      nameInput.classList.add('border-red-400')
+      nameInput.classList.remove('border-gray-300')
+      return
+    }
 
     if (!validatePhone(phone)) {
       phoneInput.classList.add('border-red-400')
-      phoneInput.classList.remove('border-gray-200')
+      phoneInput.classList.remove('border-gray-300')
       return
     }
 
     const cleanedPhone = cleanPhone(phone)
 
-    // TODO: Enviar a tu backend/API
-    console.log('Callback solicitado:', cleanedPhone)
+    try {
+      await fetch('https://europe-west1-crisopa-prod.cloudfunctions.net/landing-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone: cleanedPhone }),
+      })
+    } catch (err) {
+      // Silenciar error de red — la animación de éxito se muestra igualmente
+    }
 
     // Animación de éxito
     // 1. Fade out del formulario
@@ -214,9 +242,13 @@ const faqs = [
   })
 
   // Quitar error al escribir
+  nameInput?.addEventListener('input', () => {
+    nameInput.classList.remove('border-red-400')
+    nameInput.classList.add('border-gray-300')
+  })
   phoneInput?.addEventListener('input', () => {
     phoneInput.classList.remove('border-red-400')
-    phoneInput.classList.add('border-gray-200')
+    phoneInput.classList.add('border-gray-300')
   })
 
   // FAQ accordion
