@@ -2,42 +2,32 @@
 const features = [
   {
     title: 'Tratamientos',
-    description: 'Producto, dosis, aplicador, maquinaria. Un formulario. Sin buscar qué es obligatorio.',
+    description: 'Añade tratamientos de manera ágil, sin tener que introducir miles de datos cada vez.',
     icon: 'spray',
   },
   {
     title: 'Parcelas SIGPAC',
-    description: 'Añade tus parcelas una vez. No vuelvas a escribir provincia-municipio-polígono-parcela-recinto.',
+    description: 'Añade tus parcelas en lote y serás totalmente operativo en 5 minutos.',
     icon: 'map',
   },
   {
     title: 'Fertilización',
-    description: 'Pones kilos. Calculamos Unidades Fertilizantes. Así de simple.',
+    description: 'Olvídate del Excel. Contabiliza cada unidad de fertilizante aplicado con nuestra calculadora.',
     icon: 'plant',
   },
   {
-    title: 'Aplicadores',
-    description: 'Guarda los datos una vez. Después, solo selecciona de la lista.',
-    icon: 'user',
-  },
-  {
     title: 'Maquinaria',
-    description: 'Equipos con fechas ITEAF. Te avisamos antes de que caduquen.',
+    description: 'Te avisamos antes de que caduque la ITEAF de tus equipos.',
     icon: 'tractor',
   },
   {
-    title: 'Riegos',
-    description: 'Parcela, fecha, sistema, volumen. Nada más.',
-    icon: 'water',
-  },
-  {
     title: 'Eco-regímenes',
-    description: 'Seguimiento de prácticas PAC. Todo en el mismo sitio.',
+    description: 'Seguimiento de las prácticas obligatorias de la PAC. Todo en el mismo sitio.',
     icon: 'leaf',
   },
   {
     title: 'Multiexplotación',
-    description: 'Varias fincas o eres asesor. Una cuenta, todo controlado.',
+    description: 'Ideal para asesores y cooperativas. Ten el control de todas tus explotaciones.',
     icon: 'buildings',
   },
 ]
@@ -77,29 +67,35 @@ const iconPaths: Record<string, string> = {
     </div>
 
     <!-- Features Grid -->
-    <div class="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((feature, index) => (
         <div
-          class="group relative rounded-2xl bg-white p-7 border border-gray-200 shadow-sm shadow-gray-900/5 transition-all duration-500 hover:border-primary-200 hover:shadow-xl hover:shadow-primary-900/10 hover:-translate-y-2"
+          class="relative group h-full"
           data-animate
           style={`transition-delay: ${index * 100}ms;`}
         >
-          <!-- Icon -->
-          <div class="mb-5">
-            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 text-primary-700 transition-colors duration-300 group-hover:bg-primary-600 group-hover:text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[feature.icon]} />
-              </svg>
-            </div>
-          </div>
+          <div class="relative h-full rounded-2xl bg-white p-7 border border-gray-100 shadow-lg shadow-gray-900/5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-900/10 group-hover:-translate-y-1">
+            <!-- Gradient border on hover -->
+            <div class="absolute -inset-px rounded-2xl bg-gradient-to-br from-primary-400 to-accent-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+            <div class="absolute inset-0 rounded-2xl bg-white"></div>
 
-          <!-- Text -->
-          <h3 class="text-lg font-semibold text-gray-900">
-            {feature.title}
-          </h3>
-          <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-            {feature.description}
-          </p>
+            <!-- Icon -->
+            <div class="relative mb-5">
+              <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 text-primary-700 transition-all duration-500 group-hover:bg-primary-600 group-hover:text-white group-hover:scale-110">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[feature.icon]} />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Text -->
+            <h3 class="relative text-lg font-semibold text-gray-900 group-hover:text-primary-800 transition-colors duration-300">
+              {feature.title}
+            </h3>
+            <p class="relative mt-3 text-sm text-gray-600 leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
         </div>
       ))}
     </div>
