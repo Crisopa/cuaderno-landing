@@ -54,7 +54,7 @@ const plans = [
 ]
 ---
 
-<section id="precios" class="relative py-24 sm:py-32 bg-gradient-to-b from-white via-primary-50/30 to-white overflow-hidden">
+<section id="precios" class="relative py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-white via-primary-50/30 to-white overflow-hidden">
   <!-- Background decorations -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary-100/50 to-transparent rounded-full blur-3xl"></div>
@@ -68,7 +68,7 @@ const plans = [
       <span class="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
         Precios
       </span>
-      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         Precios claros
       </h2>
       <p class="mt-6 text-lg text-gray-600 leading-relaxed">
@@ -105,7 +105,7 @@ const plans = [
     </div>
 
     <!-- Pricing cards -->
-    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+    <div class="mt-10 sm:mt-16 grid gap-6 sm:gap-8 lg:grid-cols-3">
       {plans.map((plan, index) => (
         <div
           class="relative group"
@@ -117,7 +117,7 @@ const plans = [
             <div class="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary-400 via-primary-500 to-accent-500 opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
           )}
 
-          <div class={`relative h-full rounded-3xl bg-white p-8 transition-all duration-500 ${plan.popular ? 'shadow-2xl shadow-primary-900/20 ring-2 ring-primary-500' : 'shadow-xl shadow-gray-900/5 border border-gray-200/80 hover:border-primary-200 hover:shadow-2xl'} group-hover:-translate-y-2`}>
+          <div class={`relative h-full rounded-3xl bg-white p-6 sm:p-8 transition-all duration-500 ${plan.popular ? 'shadow-2xl shadow-primary-900/20 ring-2 ring-primary-500' : 'shadow-xl shadow-gray-900/5 border border-gray-200/80 hover:border-primary-200 hover:shadow-2xl'} group-hover:-translate-y-2`}>
             {/* Popular badge */}
             {plan.popular && (
               <div class="absolute -top-5 left-1/2 -translate-x-1/2">
@@ -137,13 +137,13 @@ const plans = [
 
               {/* Price */}
               <div class="mt-8 flex items-baseline justify-center">
-                <span class="text-5xl font-extrabold tracking-tight text-gray-900 price-monthly">
+                <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 price-monthly">
                   {plan.price.monthly}
                 </span>
-                <span class="text-5xl font-extrabold tracking-tight text-gray-900 price-yearly hidden">
+                <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 price-yearly hidden">
                   {Math.round(plan.price.yearly / 12)}
                 </span>
-                <span class="ml-1 text-2xl font-medium text-gray-400">€</span>
+                <span class="ml-1 text-xl sm:text-2xl font-medium text-gray-400">€</span>
                 <span class="ml-2 text-base font-medium text-gray-500">/mes</span>
               </div>
               <p class="mt-2 text-sm text-gray-400 yearly-savings hidden">

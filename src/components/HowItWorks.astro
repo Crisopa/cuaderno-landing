@@ -27,7 +27,7 @@ const iconPaths: Record<string, string> = {
 }
 ---
 
-<section id="como-funciona" class="relative py-24 sm:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+<section id="como-funciona" class="relative py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
   <!-- Background decorations -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-1/4 right-0 w-72 h-72 bg-primary-100/40 rounded-full blur-3xl"></div>
@@ -42,7 +42,7 @@ const iconPaths: Record<string, string> = {
       <span class="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
         Cómo funciona
       </span>
-      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         Empieza en minutos
       </h2>
       <p class="mt-6 text-lg text-gray-600 leading-relaxed">
@@ -51,7 +51,7 @@ const iconPaths: Record<string, string> = {
     </div>
 
     <!-- Steps -->
-    <div class="mt-20 relative">
+    <div class="mt-12 sm:mt-20 relative">
       <!-- Connection line - desktop -->
       <div
         class="hidden lg:block absolute top-24 left-[16.67%] right-[16.67%] h-0.5"
@@ -61,7 +61,7 @@ const iconPaths: Record<string, string> = {
         <div class="absolute inset-0 bg-gradient-to-r from-primary-200 via-primary-400 to-primary-200 rounded-full"></div>
       </div>
 
-      <div class="grid gap-12 lg:grid-cols-3 lg:gap-8 items-stretch">
+      <div class="grid gap-6 sm:gap-12 lg:grid-cols-3 lg:gap-8 items-stretch">
         {steps.map((step, index) => (
           <div
             class="relative group h-full"
@@ -69,7 +69,7 @@ const iconPaths: Record<string, string> = {
             style={`transition-delay: ${index * 150}ms;`}
           >
             <!-- Card -->
-            <div class="relative h-full bg-white rounded-3xl p-8 shadow-lg shadow-gray-900/5 border border-gray-100 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-900/10 group-hover:-translate-y-2">
+            <div class="relative h-full bg-white rounded-3xl p-6 sm:p-8 shadow-lg shadow-gray-900/5 border border-gray-100 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-900/10 group-hover:-translate-y-2">
               <!-- Gradient border on hover -->
               <div class="absolute -inset-px rounded-3xl bg-gradient-to-br from-primary-400 to-accent-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
               <div class="absolute inset-0 rounded-3xl bg-white"></div>
@@ -77,12 +77,12 @@ const iconPaths: Record<string, string> = {
               <!-- Content -->
               <div class="relative">
                 <!-- Number badge -->
-                <div class="flex justify-center mb-8">
+                <div class="flex justify-center mb-5 sm:mb-8">
                   <div class="relative">
                     <!-- Glow effect -->
                     <div class="absolute inset-0 bg-primary-500/30 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700"></div>
                     <!-- Badge -->
-                    <div class="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow-xl shadow-primary-900/30 transition-transform duration-500 group-hover:scale-110">
+                    <div class="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow-xl shadow-primary-900/30 transition-transform duration-500 group-hover:scale-110">
                       <span class="text-2xl font-bold">{step.number}</span>
                       <!-- Ring animation -->
                       <div class="absolute -inset-2 rounded-full border-2 border-primary-400/30 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"></div>
@@ -114,7 +114,7 @@ const iconPaths: Record<string, string> = {
 
             <!-- Arrow connector - mobile -->
             {index < steps.length - 1 && (
-              <div class="flex justify-center my-6 lg:hidden">
+              <div class="flex justify-center my-2 sm:my-6 lg:hidden">
                 <svg class="w-6 h-6 text-primary-400 animate-bounce-soft" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>

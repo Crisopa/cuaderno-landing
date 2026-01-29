@@ -27,7 +27,7 @@ const faqs = [
 ]
 ---
 
-<section id="faq" class="relative py-24 sm:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+<section id="faq" class="relative py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
   <!-- Background decorations -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-0 right-1/4 w-80 h-80 bg-primary-100/40 rounded-full blur-3xl"></div>
@@ -42,13 +42,13 @@ const faqs = [
       <span class="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
         Dudas
       </span>
-      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         Preguntas frecuentes
       </h2>
     </div>
 
     <!-- FAQ Accordion -->
-    <div class="mt-16 space-y-4">
+    <div class="mt-10 sm:mt-16 space-y-3 sm:space-y-4">
       {faqs.map((faq, index) => (
         <div
           class="faq-item group"
@@ -58,7 +58,7 @@ const faqs = [
           <div class="relative rounded-2xl bg-white border border-gray-200/80 overflow-hidden transition-all duration-300 hover:border-primary-200 hover:shadow-lg hover:shadow-primary-900/5">
             <button
               type="button"
-              class="faq-button flex w-full items-center justify-between px-6 py-5 text-left transition-colors duration-300 hover:bg-primary-50/50"
+              class="faq-button flex w-full items-center justify-between px-4 py-4 sm:px-6 sm:py-5 text-left transition-colors duration-300 hover:bg-primary-50/50"
               aria-expanded="false"
               aria-controls={`faq-content-${index}`}
             >
@@ -84,7 +84,7 @@ const faqs = [
               class="faq-content overflow-hidden transition-all duration-300 ease-out"
               style="max-height: 0; opacity: 0;"
             >
-              <div class="px-6 pb-5 pt-0">
+              <div class="px-4 pb-4 pt-0 sm:px-6 sm:pb-5">
                 <div class="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4"></div>
                 <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
               </div>
@@ -96,7 +96,7 @@ const faqs = [
 
     <!-- Contact CTA - Te llamamos -->
     <div class="mt-16 text-center" data-animate>
-      <div id="callback-container" class="inline-flex flex-col items-center gap-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-8 py-6 shadow-lg shadow-gray-900/5 transition-all duration-500">
+      <div id="callback-container" class="inline-flex flex-col items-center gap-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-5 py-5 sm:px-8 sm:py-6 shadow-lg shadow-gray-900/5 transition-all duration-500 w-full sm:w-auto">
         <!-- Header con icono -->
         <div id="callback-header" class="flex items-center gap-3 transition-all duration-300">
           <div id="callback-icon" class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary-100 to-primary-50 transition-all duration-500">

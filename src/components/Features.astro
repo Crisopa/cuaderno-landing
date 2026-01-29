@@ -44,7 +44,7 @@ const iconPaths: Record<string, string> = {
 }
 ---
 
-<section id="caracteristicas" class="relative py-24 sm:py-32 bg-white overflow-hidden">
+<section id="caracteristicas" class="relative py-16 sm:py-24 lg:py-32 bg-white overflow-hidden">
   <!-- Background decoration -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl"></div>
@@ -57,7 +57,7 @@ const iconPaths: Record<string, string> = {
       <span class="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
         Qué incluye
       </span>
-      <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
         Lo que te piden.
         <span class="block text-primary-700">Sin el dolor de cabeza.</span>
       </h2>
@@ -67,14 +67,14 @@ const iconPaths: Record<string, string> = {
     </div>
 
     <!-- Features Grid -->
-    <div class="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-12 sm:mt-20 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((feature, index) => (
         <div
           class="relative group h-full"
           data-animate
           style={`transition-delay: ${index * 100}ms;`}
         >
-          <div class="relative h-full rounded-2xl bg-white p-7 border border-gray-100 shadow-lg shadow-gray-900/5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-900/10 group-hover:-translate-y-1">
+          <div class="relative h-full rounded-2xl bg-white p-5 sm:p-7 border border-gray-100 shadow-lg shadow-gray-900/5 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-primary-900/10 group-hover:-translate-y-1">
             <!-- Gradient border on hover -->
             <div class="absolute -inset-px rounded-2xl bg-gradient-to-br from-primary-400 to-accent-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
             <div class="absolute inset-0 rounded-2xl bg-white"></div>
