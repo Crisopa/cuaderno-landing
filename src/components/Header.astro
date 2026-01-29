@@ -121,12 +121,17 @@ const appUrl = 'https://panel.appcrisopa.com'
   const menuIconOpen = document.getElementById('menu-icon-open')
   const menuIconClose = document.getElementById('menu-icon-close')
 
-  // Sticky header con glassmorphism
+  // Sticky header con glassmorphism + hide on scroll down
   let lastScroll = 0
+  const scrollThreshold = 10
+  const hideThreshold = 60 // mínimo recorrido antes de ocultar
+
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY
+    const isMenuOpen = mobileMenuButton?.getAttribute('aria-expanded') === 'true'
 
-    if (currentScroll > 10) {
+    // Glassmorphism al hacer scroll
+    if (currentScroll > scrollThreshold) {
       header?.classList.add('bg-white/80', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5')
       headerLine?.classList.add('opacity-100')
       headerLine?.classList.remove('opacity-0')
@@ -134,6 +139,19 @@ const appUrl = 'https://panel.appcrisopa.com'
       header?.classList.remove('bg-white/80', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5')
       headerLine?.classList.remove('opacity-100')
       headerLine?.classList.add('opacity-0')
+    }
+
+    // Ocultar/mostrar al hacer scroll (solo si el menú móvil está cerrado)
+    if (!isMenuOpen && currentScroll > hideThreshold) {
+      if (currentScroll > lastScroll) {
+        // Scroll down → ocultar
+        header?.classList.add('-translate-y-full')
+      } else {
+        // Scroll up → mostrar
+        header?.classList.remove('-translate-y-full')
+      }
+    } else {
+      header?.classList.remove('-translate-y-full')
     }
 
     lastScroll = currentScroll
