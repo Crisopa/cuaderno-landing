@@ -157,6 +157,17 @@ const appUrl = 'https://panel.appcrisopa.com'
     lastScroll = currentScroll
   })
 
+  const menuBgClasses = ['bg-white', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5']
+
+  function setMenuOpen(open: boolean) {
+    if (open) {
+      header?.classList.add(...menuBgClasses)
+    } else if (window.scrollY <= scrollThreshold) {
+      // Solo quitar el fondo si estamos arriba del todo
+      header?.classList.remove('bg-white', 'shadow-lg', 'shadow-gray-900/5')
+    }
+  }
+
   // Mobile menu toggle
   mobileMenuButton?.addEventListener('click', () => {
     const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true'
@@ -164,6 +175,7 @@ const appUrl = 'https://panel.appcrisopa.com'
     mobileMenu?.classList.toggle('hidden')
     menuIconOpen?.classList.toggle('hidden')
     menuIconClose?.classList.toggle('hidden')
+    setMenuOpen(!isExpanded)
   })
 
   // Cerrar menú al hacer click en un enlace
@@ -173,6 +185,7 @@ const appUrl = 'https://panel.appcrisopa.com'
       mobileMenuButton?.setAttribute('aria-expanded', 'false')
       menuIconOpen?.classList.remove('hidden')
       menuIconClose?.classList.add('hidden')
+      setMenuOpen(false)
     })
   })
 </script>
