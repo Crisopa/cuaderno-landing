@@ -3,11 +3,11 @@ const appUrl = 'https://panel.appcrisopa.com'
 
 const plans = [
   {
-    name: 'Básico',
+    name: 'Profesional',
     description: 'Para empezar',
-    price: { monthly: 29, yearly: 290 },
+    price: { monthly: 49, yearly: 490 },
     features: [
-      '1 técnico',
+      '1 usuario',
       'Hasta 5 explotaciones',
       'Tratamientos y fertilización',
       'Parcelas SIGPAC',
@@ -19,36 +19,34 @@ const plans = [
     popular: false,
   },
   {
-    name: 'Profesional',
+    name: 'Asesor',
     description: 'El más elegido',
-    price: { monthly: 59, yearly: 590 },
+    price: { monthly: 99, yearly: 990 },
     features: [
-      '3 técnicos',
-      '20 explotaciones',
-      'Tratamientos y fertilización',
-      'Parcelas SIGPAC',
-      'Informes PDF',
+      '3 usuarios (+10€/mes por adicional)',
+      'Hasta 25 explotaciones',
+      'Todo lo del plan Profesional',
       'Avisos de vencimientos',
       'Eco-regímenes PAC',
-      'Soporte por email',
+      'Soporte prioritario',
     ],
     notIncluded: [],
     cta: 'Prueba gratis',
     popular: true,
   },
   {
-    name: 'Cooperativa',
-    description: 'Asesorías y cooperativas',
-    price: { monthly: 99, yearly: 990 },
+    name: 'Enterprise',
+    description: 'Grandes organizaciones',
+    price: null,
     features: [
-      '5 técnicos',
+      'Usuarios a medida',
       'Explotaciones ilimitadas',
-      'Todo lo del plan Profesional',
-      'Soporte prioritario',
+      'Todo lo del plan Asesor',
       'Ayuda en la configuración',
+      'Gestor de cuenta dedicado',
     ],
     notIncluded: [],
-    cta: 'Prueba gratis',
+    cta: 'Contactar con ventas',
     popular: false,
   },
 ]
@@ -136,25 +134,34 @@ const plans = [
               <p class="mt-2 text-sm text-gray-500">{plan.description}</p>
 
               {/* Price */}
-              <div class="mt-8 flex items-baseline justify-center">
-                <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 price-monthly">
-                  {plan.price.monthly}
-                </span>
-                <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 price-yearly hidden">
-                  {Math.round(plan.price.yearly / 12)}
-                </span>
-                <span class="ml-1 text-xl sm:text-2xl font-medium text-gray-400">€</span>
-                <span class="ml-2 text-base font-medium text-gray-500">/mes</span>
-              </div>
-              <p class="mt-2 text-sm text-gray-400 yearly-savings hidden">
-                Facturado {plan.price.yearly}€/año
-              </p>
+              {plan.price ? (
+                <div class="mt-8">
+                  <div class="flex items-baseline justify-center">
+                    <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 price-monthly">
+                      {plan.price.monthly}
+                    </span>
+                    <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 price-yearly hidden">
+                      {Math.round(plan.price.yearly / 12)}
+                    </span>
+                    <span class="ml-1 text-xl sm:text-2xl font-medium text-gray-400">€</span>
+                    <span class="ml-2 text-base font-medium text-gray-500">/mes</span>
+                  </div>
+                  <p class="mt-2 text-sm text-gray-400 yearly-savings hidden">
+                    Facturado {plan.price.yearly}€/año
+                  </p>
+                </div>
+              ) : (
+                <div class="mt-8">
+                  <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900">A medida</span>
+                  <p class="mt-2 text-sm text-gray-400">Adaptado a tu organización</p>
+                </div>
+              )}
             </div>
 
             {/* CTA */}
             <div class="mt-8">
               <a
-                href={`${appUrl}/register`}
+                href={plan.price ? `${appUrl}/register` : '#contacto'}
                 class={`group/btn relative block w-full rounded-2xl py-4 px-6 text-center text-base font-semibold transition-all duration-300 overflow-hidden ${
                   plan.popular
                     ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-900/30 hover:shadow-xl hover:shadow-primary-900/40 hover:-translate-y-0.5'
