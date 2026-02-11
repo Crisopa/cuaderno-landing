@@ -1,0 +1,197 @@
+---
+---
+
+<!-- Modal backdrop -->
+<div
+  id="contact-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="contact-modal-title"
+>
+  <!-- Overlay -->
+  <div id="contact-overlay" class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+
+  <!-- Modal content -->
+  <div id="contact-panel" class="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl transition-all duration-300 opacity-0 scale-95">
+    <!-- Close button -->
+    <button
+      type="button"
+      id="contact-close"
+      class="absolute top-4 right-4 rounded-full p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+      aria-label="Cerrar"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="text-center">
+      <span class="inline-flex items-center rounded-full bg-primary-50 px-4 py-1.5 text-sm font-semibold text-primary-800">
+        Enterprise
+      </span>
+      <h2 id="contact-modal-title" class="mt-4 text-2xl font-bold tracking-tight text-gray-900">
+        Contacta con ventas
+      </h2>
+      <p class="mt-2 text-sm text-gray-500">
+        Te preparamos una propuesta adaptada a tu organización.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form id="contact-sales-form" class="mt-8 space-y-5">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="contact-name" class="block text-sm font-medium text-gray-700">Nombre</label>
+          <input
+            type="text"
+            id="contact-name"
+            name="name"
+            required
+            class="mt-1.5 block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+            placeholder="Tu nombre"
+          />
+        </div>
+        <div>
+          <label for="contact-company" class="block text-sm font-medium text-gray-700">Empresa</label>
+          <input
+            type="text"
+            id="contact-company"
+            name="company"
+            required
+            class="mt-1.5 block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+            placeholder="Tu empresa o cooperativa"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            id="contact-email"
+            name="email"
+            required
+            class="mt-1.5 block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+            placeholder="tu@empresa.com"
+          />
+        </div>
+        <div>
+          <label for="contact-phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+          <input
+            type="tel"
+            id="contact-phone"
+            name="phone"
+            class="mt-1.5 block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+            placeholder="612 345 678"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        id="contact-submit"
+        class="group/btn relative w-full rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 py-4 px-6 text-base font-semibold text-white shadow-lg shadow-primary-900/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary-900/40 hover:-translate-y-0.5 overflow-hidden"
+      >
+        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></span>
+        <span class="relative" id="contact-submit-text">Solicitar propuesta</span>
+      </button>
+    </form>
+
+    <!-- Success message (hidden by default) -->
+    <div id="contact-success" class="hidden text-center py-8">
+      <div class="flex items-center justify-center w-14 h-14 mx-auto rounded-full bg-green-100">
+        <svg class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h3 class="mt-4 text-lg font-semibold text-gray-900">Recibido</h3>
+      <p class="mt-2 text-sm text-gray-500">Te contactamos en menos de 24h.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('contact-modal')
+  const overlay = document.getElementById('contact-overlay')
+  const panel = document.getElementById('contact-panel')
+  const closeBtn = document.getElementById('contact-close')
+  const form = document.getElementById('contact-sales-form') as HTMLFormElement | null
+  const successMsg = document.getElementById('contact-success')
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null
+  const submitText = document.getElementById('contact-submit-text')
+
+  function openModal() {
+    modal?.classList.remove('hidden')
+    modal?.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+    requestAnimationFrame(() => {
+      overlay?.classList.remove('opacity-0')
+      panel?.classList.remove('opacity-0', 'scale-95')
+      panel?.classList.add('opacity-100', 'scale-100')
+    })
+  }
+
+  function closeModal() {
+    overlay?.classList.add('opacity-0')
+    panel?.classList.remove('opacity-100', 'scale-100')
+    panel?.classList.add('opacity-0', 'scale-95')
+    setTimeout(() => {
+      modal?.classList.add('hidden')
+      modal?.classList.remove('flex')
+      document.body.style.overflow = ''
+    }, 300)
+  }
+
+  // Open from any link with href="#contacto"
+  document.querySelectorAll('a[href="#contacto"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      openModal()
+    })
+  })
+
+  closeBtn?.addEventListener('click', closeModal)
+  overlay?.addEventListener('click', closeModal)
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+      closeModal()
+    }
+  })
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(form)
+    const data = {
+      name: (formData.get('name') as string)?.trim(),
+      company: (formData.get('company') as string)?.trim(),
+      email: (formData.get('email') as string)?.trim(),
+      phone: (formData.get('phone') as string)?.replace(/[\s\-\(\)\+]/g, '').replace(/^34/, ''),
+    }
+
+    if (submitBtn) submitBtn.disabled = true
+    if (submitText) submitText.textContent = 'Enviando...'
+
+    try {
+      await fetch('https://europe-west1-crisopa-prod.cloudfunctions.net/enterprise-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+    } catch (err) {
+      // Silenciar error de red
+    }
+
+    form.style.transition = 'opacity 0.3s'
+    form.style.opacity = '0'
+    setTimeout(() => {
+      form.style.display = 'none'
+      successMsg?.classList.remove('hidden')
+    }, 300)
+  })
+</script>
