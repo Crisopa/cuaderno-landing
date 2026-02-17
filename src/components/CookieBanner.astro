@@ -1,0 +1,49 @@
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-[100] translate-y-full transition-transform duration-500 ease-out"
+  role="dialog"
+  aria-label="Aviso de cookies"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
+    <div class="rounded-2xl bg-gray-950 border border-gray-800/60 shadow-2xl shadow-black/20 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <p class="text-sm text-gray-300 leading-relaxed flex-1">
+        Usamos cookies técnicas para que el sitio funcione correctamente.
+        Más info en nuestra <a href="/cookies" class="text-primary-400 hover:text-primary-300 underline underline-offset-2 transition-colors">política de cookies</a>.
+      </p>
+      <button
+        id="cookie-accept"
+        class="shrink-0 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-500 active:bg-primary-700 transition-colors cursor-pointer"
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner')
+    const acceptBtn = document.getElementById('cookie-accept')
+    if (!banner || !acceptBtn) return
+
+    if (localStorage.getItem('cookie_consent')) {
+      banner.remove()
+      return
+    }
+
+    requestAnimationFrame(() => {
+      banner.classList.remove('translate-y-full')
+      banner.classList.add('translate-y-0')
+    })
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookie_consent', 'accepted')
+      banner.classList.remove('translate-y-0')
+      banner.classList.add('translate-y-full')
+      banner.addEventListener('transitionend', () => banner.remove(), { once: true })
+    })
+  }
+
+  initCookieBanner()
+  document.addEventListener('astro:page-load', initCookieBanner)
+</script>

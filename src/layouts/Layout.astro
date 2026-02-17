@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import { ClientRouter } from 'astro:transitions'
+import CookieBanner from '../components/CookieBanner.astro'
 
 interface Props {
   title?: string
@@ -39,6 +40,7 @@ const {
   </head>
   <body class="font-sans antialiased text-gray-900 bg-white overflow-x-hidden">
     <slot />
+    <CookieBanner />
 
     <!-- Intersection Observer for scroll animations -->
     <script>
