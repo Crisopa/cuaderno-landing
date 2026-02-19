@@ -5,7 +5,7 @@ const navLinks = [
   { href: '#faq', label: 'Dudas' },
 ]
 
-const appUrl = 'https://panel.appcrisopa.com'
+const appUrl = 'https://panel.crisopa.app'
 ---
 
 <header
@@ -55,7 +55,7 @@ const appUrl = 'https://panel.appcrisopa.com'
       <!-- CTA Buttons -->
       <div class="flex items-center gap-3">
         <a
-          href={`${appUrl}/login`}
+          href={appUrl}
           class="hidden sm:inline-flex text-sm font-medium text-gray-600 hover:text-primary-800 transition-all px-4 py-2 rounded-lg hover:bg-primary-50/50"
         >
           Iniciar sesión
@@ -103,7 +103,7 @@ const appUrl = 'https://panel.appcrisopa.com'
           </a>
         ))}
         <a
-          href={`${appUrl}/login`}
+          href={appUrl}
           class="block rounded-xl px-4 py-3 text-base font-medium text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
         >
           Iniciar sesión
