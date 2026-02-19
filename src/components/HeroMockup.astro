@@ -1,0 +1,496 @@
+---
+// Mockup idealizado del dashboard de Crisopa para el Hero
+// 3 vistas con transición fade + zoom cinematic
+---
+
+<div class="relative aspect-[4/3] rounded-3xl bg-white shadow-2xl overflow-hidden border border-gray-200/60 ring-1 ring-gray-900/5 select-none pointer-events-none">
+  <!-- macOS title bar (always visible) -->
+  <div class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-gray-100 to-gray-50 border-b border-gray-200/70 flex items-center px-4 z-20">
+    <div class="flex gap-[6px]">
+      <div class="w-[10px] h-[10px] rounded-full bg-[#FF5F57] border border-[#E0443E]/40"></div>
+      <div class="w-[10px] h-[10px] rounded-full bg-[#FEBC2E] border border-[#DEA123]/40"></div>
+      <div class="w-[10px] h-[10px] rounded-full bg-[#28C840] border border-[#1AAB29]/40"></div>
+    </div>
+    <div class="flex-1 mx-4">
+      <div class="max-w-[180px] mx-auto h-5 bg-white/80 rounded-md border border-gray-200/60 flex items-center justify-center gap-1">
+        <svg class="w-2.5 h-2.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <span class="text-[9px] text-gray-400 font-medium">panel.crisopa.app</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 1: Dashboard ==================== -->
+  <div class="mockup-slide absolute inset-0 top-10 flex" style="animation-delay: 0s;">
+    <!-- Sidebar -->
+    <Fragment>
+      <div class="w-[130px] sm:w-[150px] bg-white border-r border-gray-100 px-3 py-3 flex flex-col shrink-0">
+        <div class="flex items-center gap-1.5 mb-3">
+          <svg class="w-5 h-5 text-primary-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z"/>
+            <path d="M11.99 22 14 12l7.822 3.184"/>
+            <path d="M14 12 8.47 2.302"/>
+          </svg>
+          <span class="text-[11px] font-logo font-bold text-gray-800">crisopa</span>
+        </div>
+        <div class="text-[10px] font-semibold text-gray-800 mb-3">Hola, Juan</div>
+        <div class="text-[8px] text-gray-400 font-medium uppercase tracking-wider mb-1.5">General</div>
+        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-primary-50 border border-primary-200/60 mb-0.5">
+          <svg class="w-3 h-3 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+          <span class="text-[10px] font-semibold text-primary-800">Dashboard</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg mb-0.5">
+          <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          <span class="text-[10px] text-gray-500">Mis explotaciones</span>
+        </div>
+        <div class="text-[8px] text-gray-400 font-medium uppercase tracking-wider mt-3 mb-1.5">Operaciones</div>
+        <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+          <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          <span class="text-[10px] text-gray-500">Tratamientos</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+          <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
+          <span class="text-[10px] text-gray-500">Fertilización</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+          <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <span class="text-[10px] text-gray-500">Plan de abonado</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg">
+          <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+          <span class="text-[10px] text-gray-500">Eco-regímenes</span>
+        </div>
+      </div>
+    </Fragment>
+
+    <!-- Dashboard content -->
+    <div class="flex-1 bg-gray-50/80 px-4 py-3 overflow-hidden">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <h3 class="text-sm font-bold text-gray-900">Dashboard</h3>
+          <p class="text-[9px] text-gray-400">Visión general de todas tus explotaciones</p>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-4 gap-2 mb-3">
+        <div class="bg-white rounded-lg p-2 border border-gray-100 shadow-sm">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[8px] text-gray-500 font-medium">Explotaciones</span>
+            <svg class="w-3 h-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          </div>
+          <div class="text-base font-bold text-gray-900">6</div>
+          <div class="text-[8px] text-gray-400">98,2 ha totales</div>
+        </div>
+        <div class="bg-white rounded-lg p-2 border border-gray-100 shadow-sm">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[8px] text-gray-500 font-medium">Parcelas</span>
+            <svg class="w-3 h-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <div class="text-base font-bold text-gray-900">9</div>
+          <div class="text-[8px] text-gray-400">En gestión activa</div>
+        </div>
+        <div class="bg-white rounded-lg p-2 border border-gray-100 shadow-sm">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[8px] text-gray-500 font-medium">Tratamientos</span>
+            <svg class="w-3 h-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          </div>
+          <div class="text-base font-bold text-gray-900">10</div>
+          <div class="text-[8px] text-gray-400">Registrados</div>
+        </div>
+        <div class="bg-white rounded-lg p-2 border border-gray-100 shadow-sm">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[8px] text-gray-500 font-medium">Alertas</span>
+            <svg class="w-3 h-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <div class="text-base font-bold text-amber-600">1</div>
+          <div class="text-[8px] text-gray-400">Requiere atención</div>
+        </div>
+      </div>
+
+      <!-- Bottom sections -->
+      <div class="grid grid-cols-2 gap-2">
+        <div class="bg-white rounded-lg p-2.5 border border-gray-100 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="text-[10px] font-semibold text-gray-800">Explotaciones</div>
+              <div class="text-[8px] text-gray-400">Gestiona tus fincas</div>
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2 p-1.5 rounded-md">
+              <div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center">
+                <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[9px] font-semibold text-gray-700 truncate">Finca Los Olivos</div>
+                <div class="text-[8px] text-gray-400">Córdoba · 40,7 ha</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 p-1.5 rounded-md">
+              <div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center">
+                <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[9px] font-semibold text-gray-700 truncate">El Trigal</div>
+                <div class="text-[8px] text-gray-400">Sevilla · 31,8 ha</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 p-1.5 rounded-md">
+              <div class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center">
+                <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[9px] font-semibold text-gray-700 truncate">La Almunia</div>
+                <div class="text-[8px] text-gray-400">Cádiz · 23,9 ha</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-2.5 border border-gray-100 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="text-[10px] font-semibold text-gray-800">Tratamientos recientes</div>
+              <div class="text-[8px] text-gray-400">Últimas aplicaciones</div>
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-1.5 p-1.5 rounded-md bg-gray-50/60">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1 mb-0.5">
+                  <span class="inline-block px-1 py-0.5 text-[7px] font-medium bg-primary-100 text-primary-700 rounded">Herbicida</span>
+                  <span class="text-[8px] font-semibold text-gray-700 truncate">ROUNDUP ULTRA</span>
+                </div>
+                <div class="text-[7px] text-gray-400 truncate">Finca Los Olivos · Olivar</div>
+              </div>
+              <div class="text-[8px] text-gray-400 shrink-0">17/2</div>
+            </div>
+            <div class="flex items-center gap-1.5 p-1.5 rounded-md">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1 mb-0.5">
+                  <span class="inline-block px-1 py-0.5 text-[7px] font-medium bg-amber-100 text-amber-700 rounded">Fungicida</span>
+                  <span class="text-[8px] font-semibold text-gray-700 truncate">DITIVER C PM</span>
+                </div>
+                <div class="text-[7px] text-gray-400 truncate">El Trigal · Cebada</div>
+              </div>
+              <div class="text-[8px] text-gray-400 shrink-0">11/2</div>
+            </div>
+            <div class="flex items-center gap-1.5 p-1.5 rounded-md bg-gray-50/60">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1 mb-0.5">
+                  <span class="inline-block px-1 py-0.5 text-[7px] font-medium bg-primary-100 text-primary-700 rounded">Herbicida</span>
+                  <span class="text-[8px] font-semibold text-gray-700 truncate">HERBIMUR MCPA</span>
+                </div>
+                <div class="text-[7px] text-gray-400 truncate">El Trigal · Cebada buena</div>
+              </div>
+              <div class="text-[8px] text-gray-400 shrink-0">11/2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 2: Nuevo tratamiento ==================== -->
+  <div class="mockup-slide absolute inset-0 top-10 flex" style="animation-delay: 5s;">
+    <!-- Sidebar with Tratamientos active -->
+    <div class="w-[130px] sm:w-[150px] bg-white border-r border-gray-100 px-3 py-3 flex flex-col shrink-0">
+      <div class="flex items-center gap-1.5 mb-3">
+        <svg class="w-5 h-5 text-primary-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z"/>
+          <path d="M11.99 22 14 12l7.822 3.184"/>
+          <path d="M14 12 8.47 2.302"/>
+        </svg>
+        <span class="text-[11px] font-logo font-bold text-gray-800">crisopa</span>
+      </div>
+      <div class="text-[10px] font-semibold text-gray-800 mb-3">Hola, Juan</div>
+      <div class="text-[8px] text-gray-400 font-medium uppercase tracking-wider mb-1.5">General</div>
+      <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        <span class="text-[10px] text-gray-500">Dashboard</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+        <span class="text-[10px] text-gray-500">Mis explotaciones</span>
+      </div>
+      <div class="text-[8px] text-gray-400 font-medium uppercase tracking-wider mt-3 mb-1.5">Operaciones</div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary-50 border border-primary-200/60 mb-0.5">
+        <svg class="w-3 h-3 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+        <span class="text-[10px] font-semibold text-primary-800">Tratamientos</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
+        <span class="text-[10px] text-gray-500">Fertilización</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+        <span class="text-[10px] text-gray-500">Plan de abonado</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+        <span class="text-[10px] text-gray-500">Eco-regímenes</span>
+      </div>
+    </div>
+
+    <!-- Tratamiento content -->
+    <div class="flex-1 bg-gray-50/80 px-4 py-3 overflow-hidden">
+      <!-- Header -->
+      <div class="flex items-center gap-2 mb-3">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+        <h3 class="text-sm font-bold text-gray-900">Nuevo tratamiento</h3>
+      </div>
+
+      <!-- Stepper -->
+      <div class="flex items-center gap-0 mb-4 px-2">
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-primary-700 flex items-center justify-center">
+            <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+          </div>
+          <span class="text-[7px] text-primary-700 font-medium mt-1">Parcelas</span>
+        </div>
+        <div class="flex-1 h-[2px] bg-primary-700 mx-1"></div>
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-primary-700 border-2 border-primary-700 flex items-center justify-center">
+            <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          </div>
+          <span class="text-[7px] text-primary-700 font-semibold mt-1">Tratamiento</span>
+        </div>
+        <div class="flex-1 h-[2px] bg-gray-200 mx-1"></div>
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center">
+            <svg class="w-3 h-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          </div>
+          <span class="text-[7px] text-gray-400 mt-1">Aplicación</span>
+        </div>
+      </div>
+
+      <!-- Product card -->
+      <div class="bg-white rounded-lg p-3 border border-gray-100 shadow-sm mb-3">
+        <div class="text-[10px] font-semibold text-gray-800 mb-1">Productos fitosanitarios</div>
+        <div class="text-[8px] text-gray-400 mb-2">1 producto añadido</div>
+
+        <!-- Product row -->
+        <div class="flex items-center gap-2 p-2 bg-gray-50 rounded-md mb-2">
+          <div class="w-5 h-5 rounded bg-primary-100 flex items-center justify-center text-[8px] font-bold text-primary-700">1</div>
+          <div class="flex-1 min-w-0">
+            <div class="text-[9px] font-semibold text-gray-800">ROUNDUP ULTRA PLUS</div>
+            <div class="text-[7px] text-gray-400">ES-00725 · GLIFOSATO 36% (SAL POTÁSICA) [SL] P/V</div>
+          </div>
+          <div class="text-[9px] text-gray-500 font-medium">0,00 <span class="text-[7px] text-gray-400">l/ha</span></div>
+        </div>
+
+        <!-- Volume & surface -->
+        <div class="flex gap-3">
+          <div class="flex items-center gap-1.5">
+            <span class="text-[8px] text-gray-500">Vol. caldo</span>
+            <div class="flex items-center bg-gray-50 rounded px-1.5 py-0.5 border border-gray-200">
+              <span class="text-[9px] font-semibold text-gray-800">1000</span>
+              <span class="text-[7px] text-gray-400 ml-1">L/ha</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-[8px] text-gray-500">Sup. aplicada</span>
+            <div class="flex items-center bg-gray-50 rounded px-1.5 py-0.5 border border-gray-200">
+              <span class="text-[9px] font-semibold text-gray-800">100</span>
+              <span class="text-[7px] text-gray-400 ml-1">%</span>
+            </div>
+            <span class="text-[8px] text-gray-400">12,23 ha</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1 px-2 py-1 rounded-md border border-gray-200 bg-white">
+          <svg class="w-2.5 h-2.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          <span class="text-[9px] text-gray-600 font-medium">Anterior</span>
+        </div>
+        <div class="flex items-center gap-1 px-3 py-1 rounded-md bg-primary-700 text-white">
+          <span class="text-[9px] font-medium">Siguiente</span>
+          <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 3: Fertilización ==================== -->
+  <div class="mockup-slide absolute inset-0 top-10 flex" style="animation-delay: 10s;">
+    <!-- Sidebar with Fertilización active -->
+    <div class="w-[130px] sm:w-[150px] bg-white border-r border-gray-100 px-3 py-3 flex flex-col shrink-0">
+      <div class="flex items-center gap-1.5 mb-3">
+        <svg class="w-5 h-5 text-primary-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11.264 2.205A4 4 0 0 0 6.42 4.211l-4 8a4 4 0 0 0 1.359 5.117l6 4a4 4 0 0 0 4.438 0l6-4a4 4 0 0 0 1.576-4.592l-2-6a4 4 0 0 0-2.53-2.53z"/>
+          <path d="M11.99 22 14 12l7.822 3.184"/>
+          <path d="M14 12 8.47 2.302"/>
+        </svg>
+        <span class="text-[11px] font-logo font-bold text-gray-800">crisopa</span>
+      </div>
+      <div class="text-[10px] font-semibold text-gray-800 mb-3">Hola, Juan</div>
+      <div class="text-[8px] text-gray-400 font-medium uppercase tracking-wider mb-1.5">General</div>
+      <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        <span class="text-[10px] text-gray-500">Dashboard</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1.5 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+        <span class="text-[10px] text-gray-500">Mis explotaciones</span>
+      </div>
+      <div class="text-[8px] text-gray-400 font-medium uppercase tracking-wider mt-3 mb-1.5">Operaciones</div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+        <span class="text-[10px] text-gray-500">Tratamientos</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary-50 border border-primary-200/60 mb-0.5">
+        <svg class="w-3 h-3 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
+        <span class="text-[10px] font-semibold text-primary-800">Fertilización</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg mb-0.5">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+        <span class="text-[10px] text-gray-500">Plan de abonado</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-2 py-1 rounded-lg">
+        <svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+        <span class="text-[10px] text-gray-500">Eco-regímenes</span>
+      </div>
+    </div>
+
+    <!-- Fertilización content -->
+    <div class="flex-1 bg-gray-50/80 px-4 py-3 overflow-hidden">
+      <!-- Breadcrumb + Header -->
+      <div class="text-[8px] text-gray-400 mb-1">Finca Los Olivos &rsaquo; Fertilización</div>
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <h3 class="text-sm font-bold text-gray-900">Fertilización</h3>
+          <div class="flex items-center gap-2 mt-0.5">
+            <span class="text-[8px] text-gray-400">1 aplicaciones registradas</span>
+            <span class="inline-flex items-center gap-0.5 text-[8px] text-gray-500 bg-gray-100 rounded px-1 py-0.5">
+              <svg class="w-2 h-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              Campaña 2025/2026
+            </span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 px-2 py-1 rounded-md bg-primary-700 text-white">
+          <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+          <span class="text-[8px] font-medium">Nueva fertilización</span>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-0 mb-3 border-b border-gray-200">
+        <div class="px-2 py-1 text-[9px] font-medium text-primary-700 border-b-2 border-primary-700">Aplicaciones</div>
+        <div class="px-2 py-1 text-[9px] text-gray-400">Plan de abonado</div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden">
+        <!-- Table header -->
+        <div class="grid grid-cols-[1fr_1fr_1.2fr_1.2fr_1.2fr] gap-1 px-2 py-1.5 bg-gray-50 border-b border-gray-100">
+          <span class="text-[8px] font-semibold text-gray-600">Parcela</span>
+          <span class="text-[8px] font-semibold text-gray-600">Cultivo</span>
+          <span class="text-[8px] font-semibold text-gray-600">N (UF)</span>
+          <span class="text-[8px] font-semibold text-gray-600">P₂O₅ (UF)</span>
+          <span class="text-[8px] font-semibold text-gray-600">K₂O (UF)</span>
+        </div>
+        <!-- Row 1 -->
+        <div class="grid grid-cols-[1fr_1fr_1.2fr_1.2fr_1.2fr] gap-1 px-2 py-2 border-b border-gray-50 items-center">
+          <span class="text-[8px] font-medium text-gray-700">Ladera arriba</span>
+          <span class="text-[8px] text-gray-500">Trigo duro</span>
+          <!-- N bar -->
+          <div>
+            <div class="flex justify-between mb-0.5">
+              <span class="text-[7px] text-gray-400">Rec: 200</span>
+              <span class="text-[7px] text-gray-500">Apl: 7,5 (4%)</span>
+            </div>
+            <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-gray-800 rounded-full" style="width: 4%;"></div>
+            </div>
+          </div>
+          <!-- P bar -->
+          <div>
+            <div class="flex justify-between mb-0.5">
+              <span class="text-[7px] text-gray-400">Rec: 150</span>
+              <span class="text-[7px] text-gray-500">Apl: 0,0 (0%)</span>
+            </div>
+            <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-600 rounded-full" style="width: 0%;"></div>
+            </div>
+          </div>
+          <!-- K bar -->
+          <div>
+            <div class="flex justify-between mb-0.5">
+              <span class="text-[7px] text-gray-400">Rec: 150</span>
+              <span class="text-[7px] text-gray-500">Apl: 0,0 (0%)</span>
+            </div>
+            <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-600 rounded-full" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="grid grid-cols-[1fr_1fr_1.2fr_1.2fr_1.2fr] gap-1 px-2 py-2 items-center">
+          <span class="text-[8px] font-medium text-gray-700">Olivos 2018</span>
+          <span class="text-[8px] text-gray-500">Olivo</span>
+          <!-- N bar -->
+          <div>
+            <div class="flex justify-between mb-0.5">
+              <span class="text-[7px] text-gray-400">Rec: 170</span>
+              <span class="text-[7px] text-gray-500">Apl: 85 (50%)</span>
+            </div>
+            <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-600 rounded-full" style="width: 50%;"></div>
+            </div>
+          </div>
+          <!-- P bar -->
+          <div>
+            <div class="flex justify-between mb-0.5">
+              <span class="text-[7px] text-gray-400">Rec: 80</span>
+              <span class="text-[7px] text-gray-500">Apl: 40 (50%)</span>
+            </div>
+            <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-600 rounded-full" style="width: 50%;"></div>
+            </div>
+          </div>
+          <!-- K bar -->
+          <div>
+            <div class="flex justify-between mb-0.5">
+              <span class="text-[7px] text-gray-400">Rec: 60</span>
+              <span class="text-[7px] text-gray-500">Apl: 30 (50%)</span>
+            </div>
+            <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div class="h-full bg-primary-600 rounded-full" style="width: 50%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay: blur + fade edges -->
+  <div class="absolute inset-0 backdrop-blur-[0.5px] z-10"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent z-10"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 z-10"></div>
+
+  <!-- Shimmer effect -->
+  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-shimmer z-10" style="animation-duration: 3s;"></div>
+</div>
+
+<style>
+  /* Fade + zoom cinematic: 15s cycle, 3 slides × 5s each */
+  .mockup-slide {
+    opacity: 0;
+    transform: scale(1.04);
+    animation: mockupFadeZoom 15s ease-in-out infinite;
+  }
+
+  @keyframes mockupFadeZoom {
+    /* Snap in: fast fade + zoom (0.3s = 2%) */
+    0% { opacity: 0; transform: scale(1.04); }
+    2% { opacity: 1; transform: scale(1); }
+    /* Hold */
+    31% { opacity: 1; transform: scale(1); }
+    /* Snap out: fast fade + zoom (0.3s = 2%) */
+    33.33% { opacity: 0; transform: scale(0.97); }
+    /* Stay hidden */
+    100% { opacity: 0; transform: scale(0.97); }
+  }
+</style>
