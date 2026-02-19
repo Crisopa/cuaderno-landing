@@ -1,4 +1,6 @@
 ---
+import PromoBanner from './PromoBanner.astro'
+
 const navLinks = [
   { href: '#caracteristicas', label: 'Qué incluye' },
   { href: '#precios', label: 'Precios' },
@@ -12,8 +14,9 @@ const appUrl = 'https://panel.crisopa.app'
   id="header"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
 >
-  <!-- Gradient line at top -->
-  <div class="h-1 w-full bg-gradient-to-r from-primary-600 via-primary-400 to-accent-500 opacity-0 transition-opacity duration-500" id="header-line"></div>
+  <PromoBanner />
+  <!-- Gradient line at top (desactivada mientras el promo banner está activo) -->
+  <!-- <div class="h-1 w-full bg-gradient-to-r from-primary-600 via-primary-400 to-accent-500 opacity-0 transition-opacity duration-500" id="header-line"></div> -->
 
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
