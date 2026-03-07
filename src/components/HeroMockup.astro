@@ -3,7 +3,7 @@
 // 3 vistas con transición fade + zoom cinematic
 ---
 
-<div class="relative aspect-[4/3] rounded-3xl bg-white shadow-2xl overflow-hidden border border-gray-200/60 ring-1 ring-gray-900/5 select-none pointer-events-none">
+<div class="mockup-wrapper relative rounded-3xl bg-white shadow-2xl overflow-hidden border border-gray-200/60 ring-1 ring-gray-900/5 select-none pointer-events-none">
   <!-- macOS title bar (always visible) -->
   <div class="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-gray-100 to-gray-50 border-b border-gray-200/70 flex items-center px-4 z-20">
     <div class="flex gap-[6px]">
@@ -475,6 +475,22 @@
 </div>
 
 <style>
+  /* Scale-to-fit: the mockup renders at 640px internally and scales down on small screens */
+  .mockup-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  @media (max-width: 639px) {
+    .mockup-wrapper {
+      /* Render at fixed size, then scale to fit container */
+      width: 640px;
+      aspect-ratio: 4 / 3;
+      transform-origin: top left;
+      /* Scale is calculated via JS below, but fallback with container query */
+    }
+  }
+
   /* Fade + zoom cinematic: 15s cycle, 3 slides × 5s each */
   .mockup-slide {
     opacity: 0;
@@ -494,3 +510,25 @@
     100% { opacity: 0; transform: scale(0.97); }
   }
 </style>
+
+<script>
+  function scaleMockup() {
+    const wrapper = document.querySelector('.mockup-wrapper') as HTMLElement;
+    if (!wrapper || !wrapper.parentElement) return;
+    const parentWidth = wrapper.parentElement.clientWidth;
+    if (parentWidth < 640) {
+      const scale = parentWidth / 640;
+      wrapper.style.transform = `scale(${scale})`;
+      wrapper.style.transformOrigin = 'top left';
+      wrapper.style.width = '640px';
+      // Set parent height to match scaled mockup
+      wrapper.parentElement.style.height = `${640 * 0.75 * scale}px`;
+    } else {
+      wrapper.style.transform = '';
+      wrapper.style.width = '';
+      if (wrapper.parentElement) wrapper.parentElement.style.height = '';
+    }
+  }
+  scaleMockup();
+  window.addEventListener('resize', scaleMockup);
+</script>
