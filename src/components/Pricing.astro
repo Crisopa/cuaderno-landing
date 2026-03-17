@@ -264,36 +264,38 @@ const plans = [
 </section>
 
 <script>
-  const toggle = document.getElementById('billing-toggle')
-  const toggleDot = document.getElementById('toggle-dot')
-  const monthlyLabel = document.getElementById('monthly-label')
-  const annualLabel = document.getElementById('annual-label')
-  const monthlyPrices = document.querySelectorAll('.price-monthly')
-  const earlyPrices = document.querySelectorAll('.price-early')
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('billing-toggle')
+    const toggleDot = document.getElementById('toggle-dot')
+    const monthlyLabel = document.getElementById('monthly-label')
+    const annualLabel = document.getElementById('annual-label')
+    const monthlyPrices = document.querySelectorAll('.price-monthly')
+    const earlyPrices = document.querySelectorAll('.price-early')
 
-  let isYearly = true
+    if (!toggle) return
 
-  // Inicializar estado visual (anual por defecto)
-  function updateToggleState() {
-    toggle?.setAttribute('aria-checked', isYearly.toString())
-    toggle?.classList.toggle('bg-primary-600', isYearly)
-    toggle?.classList.toggle('bg-gray-200', !isYearly)
-    toggleDot?.classList.toggle('translate-x-7', isYearly)
-    toggleDot?.classList.toggle('translate-x-0', !isYearly)
-    monthlyLabel?.classList.toggle('text-gray-900', !isYearly)
-    monthlyLabel?.classList.toggle('text-gray-500', isYearly)
-    annualLabel?.classList.toggle('text-gray-900', isYearly)
-    annualLabel?.classList.toggle('text-gray-500', !isYearly)
+    let isYearly = true
 
-    monthlyPrices.forEach(el => el.classList.toggle('hidden', isYearly))
-    earlyPrices.forEach(el => el.classList.toggle('hidden', !isYearly))
-  }
+    function updateToggleState() {
+      toggle?.setAttribute('aria-checked', isYearly.toString())
+      toggle?.classList.toggle('bg-primary-600', isYearly)
+      toggle?.classList.toggle('bg-gray-200', !isYearly)
+      toggleDot?.classList.toggle('translate-x-7', isYearly)
+      toggleDot?.classList.toggle('translate-x-0', !isYearly)
+      monthlyLabel?.classList.toggle('text-gray-900', !isYearly)
+      monthlyLabel?.classList.toggle('text-gray-500', isYearly)
+      annualLabel?.classList.toggle('text-gray-900', isYearly)
+      annualLabel?.classList.toggle('text-gray-500', !isYearly)
 
-  // Inicializar
-  updateToggleState()
+      monthlyPrices.forEach(el => el.classList.toggle('hidden', isYearly))
+      earlyPrices.forEach(el => el.classList.toggle('hidden', !isYearly))
+    }
 
-  toggle?.addEventListener('click', () => {
-    isYearly = !isYearly
     updateToggleState()
+
+    toggle.addEventListener('click', () => {
+      isYearly = !isYearly
+      updateToggleState()
+    })
   })
 </script>
