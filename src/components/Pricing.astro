@@ -8,7 +8,7 @@ const plans = [
     price: { monthly: 59, yearly: 588, earlyYearly: 468 },
     features: [
       '1 usuario',
-      'Hasta 5 explotaciones',
+      'Hasta 10 explotaciones',
       'Tratamientos y fertilización',
       'Parcelas SIGPAC',
       'Informes PDF',
@@ -24,11 +24,12 @@ const plans = [
     price: { monthly: 109, yearly: 1068, earlyYearly: 828 },
     features: [
       '3 usuarios (+10€/mes por adicional)',
-      'Hasta 25 explotaciones',
+      'Hasta 100 explotaciones',
       'Todo lo del plan Profesional',
       'Avisos de vencimientos',
       'Eco-regímenes PAC',
       'Soporte prioritario',
+      'Agente IA',
     ],
     notIncluded: [],
     cta: 'Prueba gratis',
@@ -44,6 +45,7 @@ const plans = [
       'Todo lo del plan Asesor',
       'Ayuda en la configuración',
       'Gestor de cuenta dedicado',
+      'Agente IA',
     ],
     notIncluded: [],
     cta: 'Contactar con ventas',
@@ -175,7 +177,7 @@ const plans = [
                   <div class="price-early hidden">
                     <div class="flex items-baseline justify-center gap-2">
                       <span class="text-lg font-semibold text-gray-400 line-through decoration-2">
-                        {Math.round(plan.price.yearly / 12)}€
+                        {plan.price.monthly}€
                       </span>
                       <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-primary-700">
                         {Math.round(plan.price.earlyYearly / 12)}
