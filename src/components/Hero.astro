@@ -4,60 +4,41 @@ const appUrl = 'https://panel.crisopa.app'
 ---
 
 <section class="relative overflow-hidden bg-gradient-to-b from-primary-50/80 via-white to-white pt-28 pb-16 sm:pt-40 sm:pb-32 lg:min-h-screen flex items-center">
-  <!-- Animated background elements -->
+  <!-- Subtle background -->
   <div class="absolute inset-0 -z-10 overflow-hidden">
-    <!-- Main gradient orbs -->
-    <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-primary-200/60 to-primary-100/40 blur-3xl animate-blob"></div>
-    <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-accent-200/50 to-accent-100/30 blur-3xl animate-blob" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary-100/30 to-accent-100/20 blur-3xl animate-pulse-soft"></div>
-
-    <!-- Floating particles -->
-    <div class="absolute top-20 left-[15%] w-3 h-3 rounded-full bg-primary-400/40 animate-float"></div>
-    <div class="absolute top-40 right-[20%] w-2 h-2 rounded-full bg-accent-400/50 animate-float-delayed"></div>
-    <div class="absolute bottom-32 left-[25%] w-4 h-4 rounded-full bg-primary-300/30 animate-float-slow"></div>
-    <div class="absolute top-1/3 right-[10%] w-2.5 h-2.5 rounded-full bg-accent-300/40 animate-float" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-1/4 right-[30%] w-3 h-3 rounded-full bg-primary-400/30 animate-float-slow" style="animation-delay: 3s;"></div>
-
-    <!-- Grid pattern overlay -->
-    <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+    <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-primary-100/40 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[400px] h-[400px] rounded-full bg-accent-100/30 blur-3xl"></div>
   </div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-12 lg:gap-y-16 items-center">
       <!-- Contenido -->
       <div class="lg:col-span-6 flex flex-col justify-center">
-        <!-- Badge con animación -->
-        <div class="mb-8 animate-fade-in-down" style="animation-delay: 100ms;">
-          <span class="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-accent-100 to-accent-50 px-5 py-2 text-sm font-medium text-accent-800 shadow-sm border border-accent-200/50 backdrop-blur-sm">
-            <span class="relative flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-accent-500 to-accent-600"></span>
-            </span>
+        <!-- Badge -->
+        <div class="mb-8" data-animate>
+          <span class="inline-flex items-center gap-2.5 rounded-full bg-accent-50 px-5 py-2 text-sm font-medium text-accent-800 border border-accent-200">
+            <span class="inline-flex rounded-full h-2.5 w-2.5 bg-accent-500"></span>
             Obligatorio a partir de 2026
           </span>
         </div>
 
-        <!-- Headline con gradiente -->
-        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl xl:text-7xl animate-fade-in-up" style="animation-delay: 200ms;">
+        <!-- Headline -->
+        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl xl:text-7xl" data-animate>
           Tu cuaderno de campo.
-          <span class="block mt-2 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent">Siempre al día.</span>
+          <span class="block mt-2 text-primary-700">Siempre al día.</span>
         </h1>
 
         <!-- Subheadline -->
-        <p class="mt-6 text-base leading-relaxed text-gray-600 sm:mt-8 sm:text-xl max-w-xl animate-fade-in-up" style="animation-delay: 300ms;">
+        <p class="mt-6 text-base leading-relaxed text-gray-600 sm:mt-8 sm:text-xl max-w-xl" data-animate>
           Registra tratamientos y fertilización en minutos. Todo organizado, siempre a mano, listo para cualquier inspección.
         </p>
 
-        <!-- CTAs con efectos premium -->
-        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up" style="animation-delay: 400ms;">
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4" data-animate>
           <a
             href={`${appUrl}/register`}
             class="group relative inline-flex items-center justify-center rounded-2xl bg-primary-800 px-6 py-3.5 sm:px-8 sm:py-4 text-base font-semibold text-white shadow-xl shadow-primary-900/20 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary-900/30 hover:-translate-y-1"
           >
-            <!-- Shine effect -->
-            <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-            <!-- Gradient overlay -->
-            <span class="absolute inset-0 bg-gradient-to-r from-primary-700 to-primary-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span class="relative flex items-center gap-2">
               Prueba gratis
               <svg class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,9 +60,9 @@ const appUrl = 'https://panel.crisopa.app'
           </a>
         </div>
 
-        <!-- Trust indicators con glassmorphism -->
-        <div class="mt-8 sm:mt-12 animate-fade-in-up" style="animation-delay: 500ms;">
-          <div class="inline-flex flex-wrap items-center gap-3 sm:gap-4 rounded-2xl bg-white/60 backdrop-blur-md border border-gray-100 px-4 py-3 sm:px-6 sm:py-4 shadow-lg shadow-gray-900/5">
+        <!-- Trust indicators -->
+        <div class="mt-8 sm:mt-12" data-animate>
+          <div class="inline-flex flex-wrap items-center gap-3 sm:gap-4 rounded-2xl bg-gray-50 border border-gray-200 px-4 py-3 sm:px-6 sm:py-4">
             <div class="flex items-center gap-2 text-sm text-gray-600">
               <div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary-100">
                 <svg class="h-3.5 w-3.5 text-primary-700" fill="currentColor" viewBox="0 0 20 20">
@@ -113,45 +94,12 @@ const appUrl = 'https://panel.crisopa.app'
       </div>
 
       <!-- Imagen/Mockup con efectos -->
-      <div class="mt-12 sm:mt-16 lg:mt-0 lg:col-span-6 animate-fade-in-up" style="animation-delay: 400ms;">
+      <div class="mt-12 sm:mt-16 lg:mt-0 lg:col-span-6" data-animate>
         <div class="relative mx-4 sm:mx-0">
-          <!-- Glow effect behind mockup -->
-          <div class="absolute -inset-4 bg-gradient-to-r from-primary-400/20 via-primary-300/10 to-accent-400/20 rounded-3xl blur-2xl animate-pulse-soft"></div>
-
           <HeroMockup />
-
-          <!-- Floating badge - check -->
-          <div class="absolute -bottom-2 -left-2 sm:-bottom-6 sm:-left-6 z-20 animate-float" style="animation-delay: 0.5s;">
-            <div class="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-accent-400 to-accent-600 shadow-xl shadow-accent-500/30 flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-300">
-              <svg class="h-8 w-8 sm:h-12 sm:w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-          </div>
-
-          <!-- Floating badge - secure -->
-          <div class="absolute -top-1 -right-1 sm:-top-4 sm:-right-4 z-20 animate-float-delayed">
-            <div class="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-white/90 backdrop-blur-md shadow-lg border border-gray-100 flex items-center gap-2">
-              <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center">
-                <svg class="w-4 h-4 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <span class="text-xs sm:text-sm font-semibold text-gray-700">RD 1311/2012</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-soft hidden lg:block">
-    <div class="flex flex-col items-center gap-2 text-gray-400">
-      <span class="text-xs font-medium uppercase tracking-wider">Descubre más</span>
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    </div>
-  </div>
 </section>
