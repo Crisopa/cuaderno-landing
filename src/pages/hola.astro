@@ -407,10 +407,14 @@ const features = [
               data: { variant: v || 'a' },
             })
           }
-          // Google Ads conversion — pendiente del label de conversión (AW-18086869043/LABEL)
-          // if (typeof (window as any).gtag === 'function') {
-          //   (window as any).gtag('event', 'conversion', { send_to: 'AW-18086869043/LABEL' })
-          // }
+          // Google Ads conversion — clic en "Reservar demo"
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'conversion', {
+              send_to: 'AW-18086869043/Viu9CMvzgpwcELPwvrBD',
+              value: 1.0,
+              currency: 'EUR',
+            })
+          }
         })
       })
     })
