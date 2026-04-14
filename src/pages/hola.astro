@@ -407,8 +407,10 @@ const features = [
               data: { variant: v || 'a' },
             })
           }
-          // Google Ads conversion (descomentar cuando se configure gtag)
-          // gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/XXXXXXXXXXXX' })
+          // Google Ads conversion — pendiente del label de conversión (AW-18086869043/LABEL)
+          // if (typeof (window as any).gtag === 'function') {
+          //   (window as any).gtag('event', 'conversion', { send_to: 'AW-18086869043/LABEL' })
+          // }
         })
       })
     })

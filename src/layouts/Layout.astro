@@ -38,6 +38,31 @@ const {
 
     <title>{title}</title>
     <ClientRouter />
+
+    <!-- Google tag (gtag.js) + Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18086869043"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      const storedConsent = (function(){
+        try { return localStorage.getItem('cookie_consent'); } catch (e) { return null; }
+      })();
+      const marketingGranted = storedConsent === 'accepted';
+
+      gtag('consent', 'default', {
+        ad_storage: marketingGranted ? 'granted' : 'denied',
+        ad_user_data: marketingGranted ? 'granted' : 'denied',
+        ad_personalization: marketingGranted ? 'granted' : 'denied',
+        analytics_storage: marketingGranted ? 'granted' : 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'AW-18086869043');
+    </script>
   </head>
   <body class="font-sans antialiased text-gray-900 bg-white overflow-x-hidden">
     <slot />
