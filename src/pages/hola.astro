@@ -5,43 +5,43 @@ import HeroMockup from '../components/HeroMockup.astro'
 const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 
 const without = [
-  'Horas registrando tratamientos uno a uno para cada agricultor',
-  'Excel con cientos de filas que nadie quiere mantener',
-  'Revisar manualmente dosis, productos y plazos de seguridad',
-  'Cada explotación nueva multiplica el trabajo',
-  'Software genérico que no entiende tu flujo de trabajo',
+  'Tardes de oficina cuadrando el papeleo de cada cliente',
+  'Registrar tratamientos uno a uno, finca por finca',
+  'Revisar a mano dosis, productos y plazos en el registro del MAPA',
+  'Software de hace 20 años que no entiende tu flujo',
+  'Cada cliente nuevo multiplica las horas de despacho',
 ]
 
 const withCrisopa = [
-  'Registro en masa: un tratamiento, muchas explotaciones a la vez',
-  'Todo organizado por explotación, parcela y campaña',
-  'Validación automática con IA: productos, dosis, plazos',
-  'De 10 a 200 explotaciones sin que cambie el esfuerzo',
-  'Pensado desde el primer día para asesores GIP',
+  'Se lo dices a ChatGPT o Claude y queda registrado',
+  'Planificas la campaña de un cliente en minutos, no en días',
+  'El copiloto verifica cada tratamiento contra la ficha del MAPA',
+  'Memoria agronómica de cada finca, consultable al instante',
+  'De 10 a 100 fincas sin que se disparen tus horas de oficina',
 ]
 
 const features = [
   {
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />',
-    title: 'Registro en masa',
-    description: 'Aplica un tratamiento a varias explotaciones a la vez. Lo que antes eran horas de copiar y pegar, ahora son minutos. Tú eliges las parcelas, Crisopa hace el resto.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />',
+    title: 'Copiloto IA (MCP)',
+    description: 'Controlas Crisopa desde ChatGPT o Claude que ya usas. Le hablas —incluso por nota de voz al salir de la finca— y registra, planifica y recomienda por ti. Cero curva de aprendizaje.',
+  },
+  {
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+    title: 'Diario de campo',
+    description: 'Visitas estilo Notion y tareas por parcela y campaña. La memoria agronómica de cada cliente, capturada sin fricción y consultable en lenguaje natural.',
   },
   {
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />',
-    title: 'Validación automática',
-    description: 'Nuestro agente de IA comprueba que cada producto esté autorizado, que la dosis sea correcta y que se cumplan los plazos de seguridad. Lo mismo que harías a mano, pero sin el coste en tiempo.',
-  },
-  {
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />',
-    title: 'Conforme al RD 1311/2012',
-    description: 'Cuaderno de explotación, registro de tratamientos fitosanitarios, fertilización, parcelas SIGPAC. Todo lo que necesitas para pasar cualquier inspección sin sorpresas.',
+    title: 'Verificado contra el MAPA',
+    description: 'Las recomendaciones cruzan el registro del MAPA y usan la ficha oficial como fuente de verdad. Sin errores de dosis ni de autorización, y con el cuaderno listo para inspección.',
   },
 ]
 ---
 
 <Layout
   title="Demo para asesores agronómicos | Crisopa"
-  description="Reserva una demo de 30 min y descubre cómo gestionar todas tus explotaciones en menos tiempo. Pensado para asesores que manejan decenas de explotaciones."
+  description="Reserva una demo de 30 min y descubre el copiloto agronómico que lleva el papeleo de todas tus fincas. Hablas con ChatGPT o Claude y recuperas tus horas de oficina."
 >
   <main>
     <!-- ==================== HERO ==================== -->
@@ -103,12 +103,12 @@ const features = [
             </div>
 
             <h1 id="headline" class="mt-8 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl animate-fade-in-up" style="animation-delay: 200ms;">
-              Registra tratamientos de todas tus explotaciones
-              <span id="headline-accent" class="block mt-2 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent">sin perder la cabeza</span>
+              El copiloto que lleva el papeleo
+              <span id="headline-accent" class="block mt-2 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent">de todas tus fincas</span>
             </h1>
 
             <p id="subtitle" class="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg max-w-xl animate-fade-in-up" style="animation-delay: 300ms;">
-              Crisopa es el cuaderno de campo pensado para asesores que gestionan muchas explotaciones. Registro en masa, validación automática con IA, cero horas perdidas.
+              Habla con ChatGPT o Claude y registra visitas, planifica campañas y crea tratamientos verificados contra el MAPA. Recupera las horas de oficina que hoy pierdes cuadrando el papeleo de cada cliente.
             </p>
 
             <!-- CTA -->
@@ -144,7 +144,7 @@ const features = [
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <span class="font-medium">RD 1311/2012</span>
+                  <span class="font-medium">Funciona con ChatGPT y Claude</span>
                 </div>
                 <div class="w-px h-4 bg-gray-200 hidden sm:block"></div>
                 <div class="flex items-center gap-2 text-sm text-gray-600">
@@ -153,7 +153,7 @@ const features = [
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <span class="font-medium">Validación con IA</span>
+                  <span class="font-medium">Verificado contra el MAPA</span>
                 </div>
                 <div class="w-px h-4 bg-gray-200 hidden sm:block"></div>
                 <div class="flex items-center gap-2 text-sm text-gray-600">
@@ -365,19 +365,19 @@ const features = [
   <script>
     const variants: Record<string, { headline: string; accent: string; subtitle: string }> = {
       a: {
-        headline: 'Registra tratamientos de todas tus explotaciones',
-        accent: 'sin perder la cabeza',
-        subtitle: 'Crisopa es el cuaderno de campo pensado para asesores que gestionan muchas explotaciones. Registro en masa, validación automática con IA, cero horas perdidas.',
+        headline: 'El copiloto que lleva el papeleo',
+        accent: 'de todas tus fincas',
+        subtitle: 'Habla con ChatGPT o Claude y registra visitas, planifica campañas y crea tratamientos verificados contra el MAPA. Recupera las horas de oficina que hoy pierdes cuadrando el papeleo de cada cliente.',
       },
       b: {
-        headline: 'Deja de perder horas',
-        accent: 'registrando tratamientos uno a uno',
-        subtitle: 'Crisopa está pensado para asesores que manejan decenas de explotaciones. De 10 a 200, en minutos en vez de horas.',
+        headline: 'Deja de perder tardes',
+        accent: 'cuadrando el cuaderno',
+        subtitle: 'Habla con ChatGPT o Claude y registra lo que haces en campo al instante, incluso por nota de voz. El copiloto agronómico para asesores que llevan decenas de fincas.',
       },
       c: {
-        headline: 'De 10 a 200 explotaciones.',
-        accent: 'En minutos, no en horas',
-        subtitle: 'El cuaderno de campo que escala contigo. Registro en masa, validación automática y visión global de todas tus explotaciones.',
+        headline: 'Planifica una campaña entera',
+        accent: 'en menos de 5 minutos',
+        subtitle: 'Le das contexto a tu IA y genera tratamientos, riegos y abonado en sus fechas. El copiloto que recupera tus horas de oficina, de 10 a 100 fincas.',
       },
     }
 
