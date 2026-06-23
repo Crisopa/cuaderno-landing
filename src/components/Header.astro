@@ -1,8 +1,8 @@
 ---
 const navLinks = [
-  { href: '/#caracteristicas', label: 'Qué incluye' },
-  { href: '/precios', label: 'Precios' },
-  { href: '/#faq', label: 'Dudas' },
+  { href: '/#caracteristicas', label: 'Qué incluye', section: 'caracteristicas' },
+  { href: '/precios', label: 'Precios', page: '/precios' },
+  { href: '/#faq', label: 'Dudas', section: 'faq' },
 ]
 
 const appUrl = 'https://panel.crisopa.app'
@@ -11,15 +11,17 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  class="fixed inset-x-0 top-0 z-50 transition-transform duration-500"
 >
-  <!-- Gradient line at top -->
-  <div class="h-1 w-full bg-gradient-to-r from-primary-600 via-primary-400 to-accent-500 opacity-0 transition-opacity duration-500" id="header-line"></div>
-
-  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+  <div class="mx-auto max-w-6xl px-4 pt-3 sm:px-6 sm:pt-4">
+    <!-- Isla flotante con cristal -->
+    <nav
+      id="nav-bar"
+      class="rounded-2xl border border-primary-100/50 bg-surface/55 px-3 shadow-lg shadow-primary-900/5 backdrop-blur-xl backdrop-saturate-150 transition-[background-color,box-shadow,border-color] duration-300 sm:px-4"
+    >
+    <div class="flex h-14 items-center justify-between">
       <!-- Logo -->
-      <a href="/">
+      <a href="/" data-press aria-label="Crisopa — inicio" class="group inline-flex items-center">
       <svg class="h-7" viewBox="0 0 510.42032 99.311523" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(-385.81631,-550.18079)">
           <!-- Texto -->
@@ -35,8 +37,8 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
           <path d="m 578.01783,629.04713 v -55.50872 h 11.24485 v 23.51198 H 588.956 q 0,-11.96044 5.11131,-18.09401 5.1113,-6.13356 15.02722,-6.13356 h 2.04452 v 12.36936 h -3.88459 q -7.15582,0 -11.14263,3.88459 -3.88459,3.78236 -3.88459,11.04041 v 28.92995 z"/>
           <path d="m 540.79725,630.98944 q -7.25805,0 -12.57381,-2.45343 -5.21352,-2.45343 -8.79144,-6.54246 -3.47568,-4.08904 -5.21352,-9.20035 -1.73784,-5.1113 -1.73784,-10.42705 v -1.94229 q 0,-5.62244 1.73784,-10.73375 1.84007,-5.21352 5.41799,-9.20033 3.5779,-4.08904 8.79144,-6.44024 5.31574,-2.45342 12.26711,-2.45342 7.25804,0 12.98271,2.86233 5.72465,2.76009 9.09812,7.76917 3.47568,5.00908 3.88458,11.65377 h -13.80051 q -0.51114,-4.29349 -3.68014,-7.15582 -3.06678,-2.86234 -8.48476,-2.86234 -4.7024,0 -7.87141,2.24898 -3.06677,2.24897 -4.60017,6.23578 -1.53339,3.8846 -1.53339,8.99589 0,4.90686 1.43116,8.89367 1.5334,3.98681 4.60019,6.2358 3.169,2.24896 8.07585,2.24896 3.68013,0 6.33801,-1.32894 2.65787,-1.32893 4.19127,-3.68013 1.63561,-2.3512 2.04452,-5.31576 h 13.8005 q -0.40889,6.74692 -3.98681,11.85821 -3.47568,5.00908 -9.30256,7.87141 -5.72466,2.86234 -13.08493,2.86234 z"/>
           </g>
-          <!-- Isologo -->
-          <g class="text-primary-800" fill="currentColor">
+          <!-- Isologo (sutil cambio de tinte al pasar por el logo) -->
+          <g class="text-primary-800 transition-colors duration-300 group-hover:text-primary-600" fill="currentColor">
           <g transform="matrix(10.535868,0,0,10.535868,377.23299,402.99239)">
             <path d="m 4.5614529,13.972116 c -0.7680582,0.03238 -1.4896607,0.473821 -1.8497924,1.194336 l -1.6696231,3.339245 c -0.48648218,0.973025 -0.16981182,2.165967 0.7353515,2.769389 l 2.5044348,1.669624 c 0.7260457,0.484093 1.675668,0.484093 2.4017136,0 L 9.1879721,21.275086 C 9.9980394,20.734954 10.348377,19.713959 10.040719,18.790218 L 9.2059075,16.285784 C 8.9905729,15.639704 8.4831895,15.131506 7.8371101,14.916171 L 5.3326753,14.081359 C 5.0779782,13.996377 4.8174722,13.961326 4.5614529,13.972121 Z m 0.4581682,1.048407 2.5036194,0.835625 a 0.49527016,0.49527016 0 0 0 8.348e-4,0 c 0.3511263,0.117026 0.6256605,0.391564 0.7426889,0.742689 l 0.8348115,2.504436 c 0.168046,0.504557 -0.020591,1.053389 -0.4630594,1.348416 l -2.5044348,1.669622 c -0.3956815,0.263822 -0.9070811,0.263822 -1.3027626,0 L 2.3268842,20.451689 C 1.8308028,20.120991 1.6607846,19.482442 1.9273942,18.949191 l 1.6696231,-3.339247 c 0.2630345,-0.526252 0.8645231,-0.775633 1.4226038,-0.589421 z"/>
             <path d="m 6.5058594,18.181641 a 0.49527003,0.49527003 0 0 0 -0.6738282,0.359375 l -0.8378906,4.175781 a 0.49522051,0.49522051 0 0 0 0.3867188,0.582031 0.49522051,0.49522051 0 0 0 0.5839843,-0.388672 l 0.7207032,-3.585937 2.7109375,1.103515 A 0.49522051,0.49522051 0 0 0 10.041016,20.154297 0.49522051,0.49522051 0 0 0 9.7695313,19.509766 Z"/>
@@ -47,12 +49,21 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
       </svg>
       </a>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex md:items-center md:gap-1">
+      <!-- Desktop Navigation: indicador deslizante (hover + sección activa) -->
+      <div id="nav-pills" class="relative hidden md:flex md:items-center md:gap-1">
+        <span
+          id="nav-indicator"
+          aria-hidden="true"
+          class="pointer-events-none absolute left-0 top-1/2 h-9 rounded-lg bg-primary-50 opacity-0 transition-[transform,width,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style="transform: translate(0, -50%)"
+        ></span>
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="relative px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-800 transition-colors rounded-lg hover:bg-primary-50/60"
+            data-nav-link
+            data-section={link.section}
+            data-page={link.page}
+            class="relative z-10 px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-800 transition-colors rounded-lg"
           >
             {link.label}
           </a>
@@ -61,10 +72,11 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 
       <!-- CTA Buttons -->
       <div class="flex items-center gap-3">
+        <span class="hidden md:block h-5 w-px bg-primary-100/80"></span>
         <a
           href={appUrl}
           data-press
-          class="hidden sm:inline-flex text-sm font-medium text-foreground-muted hover:text-primary-800 transition-[color,background-color] px-4 py-2 rounded-lg hover:bg-primary-50/50"
+          class="hidden sm:inline-flex text-sm font-medium text-foreground-muted hover:text-primary-800 transition-[color,background-color] px-4 py-2 rounded-lg hover:bg-primary-50/60"
         >
           Iniciar sesión
         </a>
@@ -88,7 +100,7 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
         <button
           id="mobile-menu-button"
           type="button"
-          class="md:hidden inline-flex items-center justify-center rounded-xl p-2.5 text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
+          class="md:hidden inline-flex items-center justify-center rounded-xl p-2.5 text-foreground-muted hover:bg-primary-50 hover:text-primary-800 transition-colors"
           aria-expanded="false"
           aria-label="Abrir menú"
         >
@@ -104,7 +116,7 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 
     <!-- Mobile Navigation -->
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="space-y-1 pb-4 pt-2 border-t border-primary-100/60 mt-2">
+      <div class="space-y-1 pb-3 pt-2 border-t border-primary-100/60">
         {navLinks.map(link => (
           <a
             href={link.href}
@@ -130,82 +142,129 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
         </a>
       </div>
     </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
 <script>
-  const header = document.getElementById('header')
-  const headerLine = document.getElementById('header-line')
-  const mobileMenuButton = document.getElementById('mobile-menu-button')
-  const mobileMenu = document.getElementById('mobile-menu')
-  const menuIconOpen = document.getElementById('menu-icon-open')
-  const menuIconClose = document.getElementById('menu-icon-close')
-
-  // Sticky header con glassmorphism + hide on scroll down
+  const w = window as any
   let lastScroll = 0
-  const scrollThreshold = 10
-  const hideThreshold = 60 // mínimo recorrido antes de ocultar
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY
-    const isMenuOpen = mobileMenuButton?.getAttribute('aria-expanded') === 'true'
-
-    // Glassmorphism al hacer scroll
-    if (currentScroll > scrollThreshold) {
-      header?.classList.add('bg-white/80', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5')
-      headerLine?.classList.add('opacity-100')
-      headerLine?.classList.remove('opacity-0')
-    } else {
-      header?.classList.remove('bg-white/80', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5')
-      headerLine?.classList.remove('opacity-100')
-      headerLine?.classList.add('opacity-0')
-    }
-
-    // Ocultar/mostrar al hacer scroll (solo si el menú móvil está cerrado)
-    if (!isMenuOpen && currentScroll > hideThreshold) {
-      if (currentScroll > lastScroll) {
-        // Scroll down → ocultar
-        header?.classList.add('-translate-y-full')
-      } else {
-        // Scroll up → mostrar
-        header?.classList.remove('-translate-y-full')
-      }
-    } else {
-      header?.classList.remove('-translate-y-full')
-    }
-
-    lastScroll = currentScroll
-  })
-
-  const menuBgClasses = ['bg-white', 'backdrop-blur-xl', 'shadow-lg', 'shadow-gray-900/5']
-
-  function setMenuOpen(open: boolean) {
-    if (open) {
-      header?.classList.add(...menuBgClasses)
-    } else if (window.scrollY <= scrollThreshold) {
-      // Solo quitar el fondo si estamos arriba del todo
-      header?.classList.remove('bg-white', 'shadow-lg', 'shadow-gray-900/5')
-    }
+  // La isla flotante se vuelve algo más sólida y sombreada al bajar
+  const setSolid = (solid: boolean) => {
+    const nav = document.getElementById('nav-bar')
+    if (!nav) return
+    nav.classList.toggle('bg-surface/75', solid)
+    nav.classList.toggle('shadow-xl', solid)
+    nav.classList.toggle('bg-surface/55', !solid)
+    nav.classList.toggle('shadow-lg', !solid)
   }
 
-  // Mobile menu toggle
-  mobileMenuButton?.addEventListener('click', () => {
-    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true'
-    mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString())
-    mobileMenu?.classList.toggle('hidden')
-    menuIconOpen?.classList.toggle('hidden')
-    menuIconClose?.classList.toggle('hidden')
-    setMenuOpen(!isExpanded)
-  })
+  function onScroll() {
+    const header = document.getElementById('header')
+    if (!header) return
+    const isMenuOpen = document.getElementById('mobile-menu-button')?.getAttribute('aria-expanded') === 'true'
+    const y = window.scrollY
 
-  // Cerrar menú al hacer click en un enlace
-  mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden')
-      mobileMenuButton?.setAttribute('aria-expanded', 'false')
-      menuIconOpen?.classList.remove('hidden')
-      menuIconClose?.classList.add('hidden')
-      setMenuOpen(false)
-    })
-  })
+    if (!isMenuOpen) setSolid(y > 10)
+
+    // Ocultar al bajar / mostrar al subir (solo con el menú cerrado)
+    if (!isMenuOpen && y > 60) {
+      header.classList.toggle('-translate-y-full', y > lastScroll)
+    } else {
+      header.classList.remove('-translate-y-full')
+    }
+    lastScroll = y
+  }
+
+  function setupHeader() {
+    const header = document.getElementById('header')
+    if (!header) return
+
+    // ---- Menú móvil ----
+    const menuBtn = document.getElementById('mobile-menu-button')
+    const menu = document.getElementById('mobile-menu')
+    const iconOpen = document.getElementById('menu-icon-open')
+    const iconClose = document.getElementById('menu-icon-close')
+
+    const setMenu = (open: boolean) => {
+      menuBtn?.setAttribute('aria-expanded', String(open))
+      menu?.classList.toggle('hidden', !open)
+      iconOpen?.classList.toggle('hidden', open)
+      iconClose?.classList.toggle('hidden', !open)
+      menuBtn?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú')
+      // Con el menú abierto la isla queda sólida; al cerrar, vuelve a su estado según scroll
+      setSolid(open || window.scrollY > 10)
+    }
+    menuBtn?.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'))
+    menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)))
+
+    // ---- Indicador deslizante + scroll-spy ----
+    const indicator = document.getElementById('nav-indicator')
+    const navPills = document.getElementById('nav-pills')
+    const links = Array.from(header.querySelectorAll('[data-nav-link]')) as HTMLElement[]
+    let hovering = false
+    let activeSection: string | null = null
+
+    const move = (el: HTMLElement) => {
+      if (!indicator) return
+      indicator.style.width = `${el.offsetWidth}px`
+      indicator.style.transform = `translate(${el.offsetLeft}px, -50%)`
+      indicator.style.opacity = '1'
+    }
+    const hide = () => { if (indicator) indicator.style.opacity = '0' }
+
+    const resolveActive = (): HTMLElement | null => {
+      const path = location.pathname
+      const byPage = links.find(l => {
+        const p = l.getAttribute('data-page')
+        return p && (path === p || path === p + '/')
+      })
+      if (byPage) return byPage
+      if (activeSection) return links.find(l => l.getAttribute('data-section') === activeSection) || null
+      return null
+    }
+
+    const refresh = () => {
+      const active = resolveActive()
+      links.forEach(l => {
+        const on = l === active
+        l.classList.toggle('text-primary-800', on)
+        l.classList.toggle('text-foreground-muted', !on)
+      })
+      if (!hovering) { active ? move(active) : hide() }
+    }
+
+    links.forEach(l => l.addEventListener('mouseenter', () => { hovering = true; move(l) }))
+    navPills?.addEventListener('mouseleave', () => { hovering = false; refresh() })
+
+    // Observa solo las secciones de esta página; en /precios manda el pathname
+    w.__crisopaSpy?.disconnect()
+    const order = links.map(l => l.getAttribute('data-section')).filter(Boolean) as string[]
+    const sections = order.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[]
+    if (sections.length) {
+      const visible = new Set<string>()
+      const spy = new IntersectionObserver(entries => {
+        entries.forEach(e => { e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id) })
+        activeSection = order.find(id => visible.has(id)) || null
+        refresh()
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 })
+      sections.forEach(s => spy.observe(s))
+      w.__crisopaSpy = spy
+    }
+
+    w.__crisopaRefresh = refresh
+    refresh()
+    onScroll()
+  }
+
+  // Listeners globales una sola vez (sobreviven a las View Transitions)
+  if (!w.__crisopaHeaderBound) {
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', () => { onScroll(); w.__crisopaRefresh?.() }, { passive: true })
+    w.__crisopaHeaderBound = true
+  }
+
+  // Re-inicializa el header en cada navegación del router
+  document.addEventListener('astro:page-load', setupHeader)
 </script>
