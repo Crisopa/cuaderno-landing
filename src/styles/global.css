@@ -965,3 +965,34 @@ p, li {
     opacity: 0;
   }
 }
+
+/* Orbiting Circles (sección Asistente IA): órbitas 100% CSS, sin JS */
+.orbit-stage {
+  container-type: inline-size;
+}
+
+.orbit-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: orbit var(--duration, 30s) linear infinite;
+  will-change: transform;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(var(--angle)) translateY(var(--radius)) rotate(calc(-1 * var(--angle)));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) + 360deg)) translateY(var(--radius))
+      rotate(calc(-1 * var(--angle) - 360deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-node {
+    animation: none;
+    /* Posición estática en su ángulo, sin girar */
+    transform: rotate(var(--angle)) translateY(var(--radius)) rotate(calc(-1 * var(--angle)));
+  }
+}
