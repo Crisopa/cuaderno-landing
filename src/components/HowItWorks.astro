@@ -60,10 +60,10 @@ const iconPaths: Record<string, string> = {
             style={`transition-delay: ${index * 120}ms;`}
           >
             <!-- Card -->
-            <div class="relative h-full bg-surface rounded-3xl p-7 sm:p-8 shadow-lg shadow-gray-900/5 border border-primary-100/70 transition-[box-shadow,transform] duration-500 group-hover:shadow-xl group-hover:shadow-primary-900/10 group-hover:-translate-y-1.5">
+            <div class="card-glow relative h-full bg-surface rounded-3xl p-7 sm:p-8 shadow-lg shadow-gray-900/5 border border-primary-100/70">
               <!-- Icono + índice de paso -->
               <div class="flex items-center justify-between">
-                <div class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow-lg shadow-primary-900/25 transition-transform duration-500 group-hover:-translate-y-0.5">
+                <div class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow-lg shadow-primary-900/25 transition-transform duration-500 group-hover:scale-110">
                   <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[step.icon]} />
                   </svg>

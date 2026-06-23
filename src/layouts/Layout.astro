@@ -93,6 +93,22 @@ const {
       })
     </script>
 
+    <!-- Card glow: rastrea el cursor sobre las .card-glow (delegado en document,
+         sobrevive a las View Transitions). Actualiza --mx/--my por card. -->
+    <script>
+      document.addEventListener(
+        'pointermove',
+        (e) => {
+          const card = (e.target as Element)?.closest?.('.card-glow') as HTMLElement | null
+          if (!card) return
+          const r = card.getBoundingClientRect()
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`)
+          card.style.setProperty('--my', `${e.clientY - r.top}px`)
+        },
+        { passive: true }
+      )
+    </script>
+
     <!-- Intersection Observer for scroll animations -->
     <script>
       const observerOptions = {

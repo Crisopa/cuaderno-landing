@@ -456,6 +456,83 @@
 }
 
 /* ========================================
+   CARD GLOW — hover unificado (estilo Linear / Vercel)
+   Borde que se ilumina siguiendo el cursor + halo interior suave +
+   elevación + sombra con tinte de marca. Una sola clase para todas las
+   tarjetas de la landing, así el efecto es idéntico en cada sección.
+   El cursor se rastrea con --mx / --my (script delegado en Layout).
+   ======================================== */
+
+.card-glow {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Halo interior difuso que sigue al cursor (detrás del contenido) */
+.card-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    oklch(0.700 0.142 170 / 0.10),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Borde luminoso que sigue al cursor (mask: solo se ve el contorno) */
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    oklch(0.610 0.158 170 / 0.70),
+    transparent 60%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Contenido por encima del halo interior sin tocar el markup de cada card */
+.card-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .card-glow:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 18px 40px -12px oklch(0.452 0.136 170 / 0.20),
+      0 8px 18px -10px oklch(0.205 0.01 160 / 0.12);
+  }
+
+  .card-glow:hover::after,
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ========================================
    NUMBER COUNTER (JS driven)
    ======================================== */
 
@@ -935,6 +1012,11 @@ p, li {
     opacity: 1;
     transform: none;
     filter: none;
+  }
+
+  /* La card no se eleva; el glow del borde se mantiene como único feedback */
+  .card-glow:hover {
+    transform: none;
   }
 
   /* El caret del eyebrow queda visible y fijo */
