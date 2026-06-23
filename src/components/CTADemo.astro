@@ -27,13 +27,12 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
         target="_blank"
         rel="noopener noreferrer"
         data-press
-        class="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-primary-900/30 transition-[box-shadow,transform] duration-300 hover:shadow-xl hover:shadow-primary-900/40 hover:-translate-y-0.5"
+        class="group relative inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-primary-600/25 overflow-hidden transition-[background-color,box-shadow] duration-300 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/30"
       >
-        <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        Reservar demo
-        <svg class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Shine único y nítido -->
+        <span class="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+        <span class="relative">Reservar demo</span>
+        <svg class="relative h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
       </a>
