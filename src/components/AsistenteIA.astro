@@ -1,15 +1,15 @@
 ---
-const appUrl = 'https://panel.crisopa.app'
+const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 
 const benefits = [
   {
     title: 'La IA que ya usas',
-    description: 'Sin aprender una herramienta nueva. Controlas Crisopa desde ChatGPT o Claude, con la mejor interfaz de chat que existe.',
+    description: 'Sin aprender una herramienta nueva. Controlas Crisopa desde ChatGPT o Claude, con la interfaz de chat que ya conoces.',
     icon: 'chat',
   },
   {
-    title: 'Habla, no teclees',
-    description: 'Una nota de voz al salir de la finca y la visita queda registrada. Sin volver al despacho, sin formularios.',
+    title: 'Habla o escribe',
+    description: 'Una nota de voz al salir de la finca o un mensaje desde el ordenador. Queda registrado sin formularios y sin volver al despacho.',
     icon: 'mic',
   },
   {
@@ -36,19 +36,15 @@ const iconPaths: Record<string, string> = {
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto" data-animate>
-      <span class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gradient-to-r from-primary-500 to-primary-600"></span>
-        </span>
-        Lo que nadie más tiene
+      <span class="inline-block font-data text-xs font-medium uppercase tracking-[0.18em] text-primary-700">
+        Lo que nadie más tiene<span class="eyebrow-caret"></span>
       </span>
       <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-        Olvídate de registrarlo todo a mano.
-        <span class="block bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent">ChatGPT lo hace por ti.</span>
+        Lo que antes era una tarde de oficina,
+        <span class="block bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent">ahora es una conversación.</span>
       </h2>
       <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-        Crisopa se conecta a <strong class="font-semibold text-gray-900">ChatGPT</strong> o <strong class="font-semibold text-gray-900">Claude</strong>. Le dices lo que has hecho o lo que quieres planificar, y él lee y escribe en Crisopa por ti. Cero curva de aprendizaje.
+        Crisopa se conecta a <strong class="font-semibold text-gray-900">ChatGPT</strong> o <strong class="font-semibold text-gray-900">Claude</strong>. Le dices lo que has hecho o lo que quieres planificar, y él lee y escribe en Crisopa por ti. Sin aprender una herramienta nueva.
       </p>
     </div>
 
@@ -125,10 +121,13 @@ const iconPaths: Record<string, string> = {
     <!-- CTA -->
     <div class="mt-10 sm:mt-14 text-center" data-animate>
       <a
-        href={`${appUrl}/register`}
-        class="group inline-flex items-center justify-center rounded-2xl bg-primary-800 px-7 py-3.5 text-base font-semibold text-white shadow-xl shadow-primary-900/20 transition-all duration-300 hover:bg-primary-900 hover:-translate-y-0.5 hover:shadow-2xl"
+        href={calendlyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-press
+        class="group inline-flex items-center justify-center rounded-2xl bg-primary-800 px-7 py-3.5 text-base font-semibold text-white shadow-xl shadow-primary-900/20 transition-[background-color,box-shadow,transform] duration-300 hover:bg-primary-900 hover:-translate-y-0.5 hover:shadow-2xl"
       >
-        Probar el copiloto gratis
+        Ver el copiloto en una demo
         <svg class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
@@ -178,6 +177,10 @@ const iconPaths: Record<string, string> = {
     .flow-wire {
       width: 4rem;
       height: 2px;
+      /* La fila se centra incluyendo el alto de las etiquetas que cuelgan bajo
+         cada icono. Subimos el cable (gap-3 0.75rem + etiqueta text-sm 1.25rem)
+         para alinearlo con el centro óptico de los iconos. */
+      margin-bottom: 2rem;
     }
 
     .flow-dot {

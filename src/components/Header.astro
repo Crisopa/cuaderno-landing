@@ -6,6 +6,7 @@ const navLinks = [
 ]
 
 const appUrl = 'https://panel.crisopa.app'
+const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 ---
 
 <header
@@ -22,7 +23,7 @@ const appUrl = 'https://panel.crisopa.app'
       <svg class="h-7" viewBox="0 0 510.42032 99.311523" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(-385.81631,-550.18079)">
           <!-- Texto -->
-          <g class="text-gray-900" fill="currentColor">
+          <g class="text-foreground" fill="currentColor">
           <path d="m 869.51978,630.4783 q -6.03135,0 -10.63149,-2.14674 -4.49796,-2.14675 -7.05361,-6.13356 -2.45343,-3.98683 -2.45343,-9.60925 0,-6.13356 2.96458,-10.01815 3.06676,-3.8846 8.48474,-5.82689 5.52023,-1.94229 12.88046,-1.94229 h 12.88053 v 8.48476 h -13.08497 q -4.90685,0 -7.56473,2.45342 -2.55565,2.3512 -2.55565,6.13356 0,3.78237 2.55565,6.13356 2.65788,2.3512 7.56473,2.3512 2.96458,0 5.41801,-1.02225 2.55565,-1.1245 4.19126,-3.68014 1.73783,-2.65787 1.94226,-7.15582 l 3.4757,3.98681 q -0.51111,5.82688 -2.86231,9.81369 -2.24898,3.98683 -6.33801,6.13357 -3.98681,2.04452 -9.81372,2.04452 z"/>
           <path d="m 884.99176,629.04713 v -16.45838 h -2.35121 V 594.2903 q 0,-4.80463 -2.3512,-7.15583 -2.35116,-2.3512 -7.25802,-2.3512 -2.55564,0 -6.13357,0.10227 -3.57792,0.10228 -7.25806,0.30668 -3.57792,0.10227 -6.44023,0.30668 v -12.06268 q 2.3512,-0.20444 5.31574,-0.40889 2.96459,-0.20446 6.03135,-0.20446 3.16903,-0.10228 5.92913,-0.10228 8.58699,0 14.20941,2.24897 5.72462,2.24897 8.58699,7.0536 2.96455,4.80461 2.96455,12.57379 v 34.45017 z"/>
           <path d="m 782.32105,649.49234 v -75.95393 h 11.24487 v 23.92089 l -1.73783,-0.10227 q 0.40888,-8.48476 3.47566,-14.20942 3.16902,-5.72465 8.38254,-8.48476 5.21353,-2.86232 11.65377,-2.86232 5.92911,0 10.63148,2.14675 4.80463,2.14674 8.17811,6.03133 3.4757,3.88458 5.31575,9.09812 1.84004,5.11129 1.84004,11.04041 v 2.14673 q 0,6.03135 -1.84004,11.24488 -1.73783,5.11129 -5.21353,9.0981 -3.37347,3.88459 -8.17805,6.13356 -4.80465,2.14675 -10.73376,2.14675 -6.2358,0 -11.44932,-2.55564 -5.11131,-2.65788 -8.28029,-8.07587 -3.16903,-5.5202 -3.57793,-14.20941 l 4.49793,6.84915 v 36.59691 z m 29.44108,-30.56558 q 4.60019,0 7.97366,-2.24897 3.47566,-2.24897 5.41797,-6.23579 1.94228,-4.08904 1.94228,-9.20034 0,-5.31575 -1.94228,-9.20035 -1.94231,-3.88458 -5.41797,-6.03133 -3.37347,-2.24897 -7.97366,-2.24897 -4.19125,0 -7.76917,1.84008 -3.47566,1.84006 -5.72464,5.41797 -2.14675,3.5779 -2.14675,8.58699 v 4.08903 q 0,4.80463 2.24898,8.17808 2.24898,3.37347 5.82685,5.21354 3.57792,1.84006 7.56473,1.84006 z"/>
@@ -51,10 +52,9 @@ const appUrl = 'https://panel.crisopa.app'
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-primary-800 transition-colors rounded-lg hover:bg-primary-50/50 group"
+            class="relative px-4 py-2 text-sm font-medium text-foreground-muted hover:text-primary-800 transition-colors rounded-lg hover:bg-primary-50/60"
           >
-            <span class="relative z-10">{link.label}</span>
-            <span class="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-primary-500/0 via-primary-500/70 to-primary-500/0 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            {link.label}
           </a>
         ))}
       </div>
@@ -63,17 +63,21 @@ const appUrl = 'https://panel.crisopa.app'
       <div class="flex items-center gap-3">
         <a
           href={appUrl}
-          class="hidden sm:inline-flex text-sm font-medium text-gray-600 hover:text-primary-800 transition-all px-4 py-2 rounded-lg hover:bg-primary-50/50"
+          data-press
+          class="hidden sm:inline-flex text-sm font-medium text-foreground-muted hover:text-primary-800 transition-[color,background-color] px-4 py-2 rounded-lg hover:bg-primary-50/50"
         >
           Iniciar sesión
         </a>
         <a
-          href={`${appUrl}/register`}
-          class="hidden sm:inline-flex group relative items-center justify-center rounded-xl bg-primary-800 px-5 py-2.5 text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:bg-primary-900 hover:shadow-lg hover:shadow-primary-800/25 hover:-translate-y-0.5"
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-press
+          class="hidden sm:inline-flex group relative items-center justify-center rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white overflow-hidden transition-[background-color,box-shadow,transform] duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/25 hover:-translate-y-0.5"
         >
-          <span class="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
           <span class="relative flex items-center gap-2">
-            Prueba gratis
+            Reservar demo
             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -100,20 +104,29 @@ const appUrl = 'https://panel.crisopa.app'
 
     <!-- Mobile Navigation -->
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="space-y-1 pb-4 pt-2 border-t border-gray-100/50 mt-2">
+      <div class="space-y-1 pb-4 pt-2 border-t border-primary-100/60 mt-2">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="block rounded-xl px-4 py-3 text-base font-medium text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
+            class="block rounded-xl px-4 py-3 text-base font-medium text-foreground-muted hover:bg-primary-50 hover:text-primary-800 transition-colors"
           >
             {link.label}
           </a>
         ))}
         <a
           href={appUrl}
-          class="block rounded-xl px-4 py-3 text-base font-medium text-gray-600 hover:bg-primary-50 hover:text-primary-800 transition-colors"
+          class="block rounded-xl px-4 py-3 text-base font-medium text-foreground-muted hover:bg-primary-50 hover:text-primary-800 transition-colors"
         >
           Iniciar sesión
+        </a>
+        <a
+          href={calendlyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-press
+          class="mt-1 block rounded-xl bg-primary-600 px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-primary-700"
+        >
+          Reservar demo
         </a>
       </div>
     </div>

@@ -9,7 +9,7 @@ const casos = [
   {
     quote: 'Planifícame la campaña del tomate de esta parcela.',
     context: 'Una conversación de 5 minutos',
-    result: 'Genera tratamientos, labores, riegos y abonado en sus fechas aproximadas, después de darle el contexto del cultivo.',
+    result: 'Genera tratamientos, labores, riegos y abonado en sus fechas, tras un par de preguntas sobre el cultivo.',
     icon: 'calendar',
   },
   {
@@ -34,7 +34,7 @@ const iconPaths: Record<string, string> = {
 }
 ---
 
-<section id="casos" class="relative py-16 sm:py-24 lg:py-32 bg-white overflow-hidden">
+<section id="casos" class="relative py-16 sm:py-24 lg:py-32 bg-background overflow-hidden">
   <!-- Background decoration -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-0 right-1/4 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl"></div>
@@ -44,14 +44,14 @@ const iconPaths: Record<string, string> = {
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto" data-animate>
-      <span class="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
-        Casos de uso
+      <span class="inline-block font-data text-xs font-medium uppercase tracking-[0.18em] text-primary-700">
+        Casos de uso<span class="eyebrow-caret"></span>
       </span>
-      <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 class="mt-6 font-display text-2xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
         Lo dices.
         <span class="text-primary-700">Está hecho.</span>
       </h2>
-      <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+      <p class="mt-6 text-lg text-foreground-muted leading-relaxed">
         Le hablas como le hablarías a un compañero. El copiloto consulta, decide contigo y deja tu cuaderno cuadrado.
       </p>
     </div>
@@ -59,7 +59,7 @@ const iconPaths: Record<string, string> = {
     <!-- Grid -->
     <div class="mt-12 sm:mt-16 grid gap-6 sm:grid-cols-2" data-animate="stagger">
       {casos.map((caso) => (
-        <div class="relative group h-full flex flex-col rounded-2xl bg-white p-6 sm:p-7 border border-gray-100 shadow-lg shadow-gray-900/5 transition-all duration-500 hover:shadow-xl hover:shadow-primary-900/10 hover:-translate-y-1">
+        <div class="group h-full flex flex-col rounded-2xl bg-surface p-6 sm:p-7 border border-primary-100/70 shadow-lg shadow-gray-900/5 transition-[box-shadow,transform] duration-500 hover:shadow-xl hover:shadow-primary-900/10 hover:-translate-y-1">
           <!-- Quote (lo que dice el asesor) -->
           <div class="flex items-start gap-3">
             <div class="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
@@ -68,8 +68,8 @@ const iconPaths: Record<string, string> = {
               </svg>
             </div>
             <div>
-              <p class="text-base font-semibold text-gray-900 leading-snug">&ldquo;{caso.quote}&rdquo;</p>
-              <p class="mt-1 text-xs font-medium text-gray-400">{caso.context}</p>
+              <p class="text-base font-semibold text-foreground leading-snug">&ldquo;{caso.quote}&rdquo;</p>
+              <p class="mt-1 text-xs font-medium text-foreground-muted">{caso.context}</p>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ const iconPaths: Record<string, string> = {
             <svg class="flex-shrink-0 mt-0.5 h-5 w-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
-            <p class="text-sm text-gray-700 leading-relaxed">{caso.result}</p>
+            <p class="text-sm text-foreground-muted leading-relaxed">{caso.result}</p>
           </div>
         </div>
       ))}

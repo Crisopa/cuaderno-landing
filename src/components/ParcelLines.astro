@@ -1,0 +1,122 @@
+---
+// Fondo firma de marca: parcelario tipo SIGPAC + curvas de nivel topográficas.
+// SVG puro con draw-in (stroke-dashoffset) y deriva lenta. Sin JS.
+// El corte por prefers-reduced-motion lo aplica el bloque global de global.css
+// (deja las líneas dibujadas y detiene la deriva).
+//
+// Uso: colocar dentro de un contenedor posicionado, detrás del contenido.
+//   <div class="absolute inset-0 -z-10"><ParcelLines /></div>
+interface Props {
+  class?: string
+}
+const { class: className = '' } = Astro.props
+---
+
+<div class:list={["parcel-field pointer-events-none select-none", className]} aria-hidden="true">
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none">
+    <!-- Curvas de nivel (deriva lenta, al fondo) -->
+    <g class="contours" stroke="var(--green-400)" stroke-width="1" opacity="0.18">
+      <path pathLength="1" class="draw d0" d="M-40 540 C 180 470, 360 520, 540 470 S 900 400, 1240 460" />
+      <path pathLength="1" class="draw d1" d="M-40 600 C 200 540, 380 580, 560 540 S 920 470, 1240 530" />
+      <path pathLength="1" class="draw d2" d="M-40 660 C 220 610, 400 650, 600 610 S 950 540, 1240 600" />
+      <path pathLength="1" class="draw d3" d="M-40 720 C 240 680, 420 720, 620 680 S 980 610, 1240 670" />
+    </g>
+
+    <!-- Parcelario SIGPAC (polígonos irregulares) -->
+    <g class="parcels" stroke="var(--green-500)" stroke-width="1.5" stroke-linejoin="round">
+      <polygon pathLength="1" class="draw d0 plot" points="120,120 360,90 410,300 240,360 90,260" />
+      <polygon pathLength="1" class="draw d1 plot" points="410,300 360,90 600,70 660,250 470,330" />
+      <polygon pathLength="1" class="draw d2 plot" points="660,250 600,70 880,110 900,300 720,360" />
+      <polygon pathLength="1" class="draw d3 plot" points="900,300 880,110 1130,160 1110,380 940,400" />
+      <polygon pathLength="1" class="draw d2 plot" points="240,360 410,300 470,330 430,520 200,500" />
+      <polygon pathLength="1" class="draw d4 plot" points="470,330 660,250 720,360 690,560 430,520" />
+      <polygon pathLength="1" class="draw d3 plot" points="720,360 900,300 940,400 940,560 690,560" />
+    </g>
+
+    <!-- Vértices del parcelario -->
+    <g class="vertices" fill="var(--green-500)">
+      <circle class="vtx v0" cx="360" cy="90" r="3" />
+      <circle class="vtx v1" cx="600" cy="70" r="3" />
+      <circle class="vtx v2" cx="880" cy="110" r="3" />
+      <circle class="vtx v3" cx="410" cy="300" r="3" />
+      <circle class="vtx v4" cx="660" cy="250" r="3" />
+      <circle class="vtx v5" cx="900" cy="300" r="3" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .parcel-field {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .parcel-field svg {
+    width: 100%;
+    height: 100%;
+    /* Difuminado hacia los bordes para que no compita con el texto */
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 60% 35%, #000 35%, transparent 80%);
+    mask-image: radial-gradient(ellipse 85% 75% at 60% 35%, #000 35%, transparent 80%);
+  }
+
+  .plot {
+    fill: var(--green-500);
+    fill-opacity: 0;
+    animation: plot-fill 1.2s ease-out forwards;
+    animation-delay: 1.1s;
+  }
+
+  /* Draw-in: pathLength=1 normaliza el trazo para todos los paths */
+  .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .d0 { animation-delay: 0.05s; }
+  .d1 { animation-delay: 0.25s; }
+  .d2 { animation-delay: 0.45s; }
+  .d3 { animation-delay: 0.65s; }
+  .d4 { animation-delay: 0.85s; }
+
+  .vtx {
+    opacity: 0;
+    animation: vtx-in 0.5s ease-out forwards;
+  }
+  .v0 { animation-delay: 1.2s; }
+  .v1 { animation-delay: 1.3s; }
+  .v2 { animation-delay: 1.4s; }
+  .v3 { animation-delay: 1.5s; }
+  .v4 { animation-delay: 1.6s; }
+  .v5 { animation-delay: 1.7s; }
+
+  /* Deriva lenta del conjunto de curvas (vida sutil de fondo) */
+  .contours {
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes plot-fill {
+    to { fill-opacity: 0.04; }
+  }
+
+  @keyframes vtx-in {
+    to { opacity: 0.55; }
+  }
+
+  @keyframes drift {
+    from { transform: translateX(0) translateY(0); }
+    to { transform: translateX(-26px) translateY(10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .draw { stroke-dashoffset: 0; }
+    .plot { fill-opacity: 0.04; }
+    .vtx { opacity: 0.55; }
+    .contours { animation: none; }
+  }
+</style>

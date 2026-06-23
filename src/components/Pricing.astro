@@ -1,5 +1,5 @@
 ---
-const appUrl = 'https://panel.crisopa.app'
+const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 
 const plans = [
   {
@@ -9,13 +9,14 @@ const plans = [
     features: [
       'Hasta 10 explotaciones',
       'Todos los técnicos del equipo',
+      'Copiloto IA (ChatGPT y Claude)',
       'Tratamientos y fertilización',
       'Parcelas SIGPAC',
       'Informes PDF para inspección',
       'Soporte por email',
     ],
     notIncluded: [],
-    cta: 'Prueba gratis',
+    cta: 'Reservar demo',
     popular: false,
   },
   {
@@ -32,7 +33,7 @@ const plans = [
       'Soporte prioritario',
     ],
     notIncluded: [],
-    cta: 'Prueba gratis',
+    cta: 'Reservar demo',
     popular: true,
   },
   {
@@ -53,7 +54,7 @@ const plans = [
 ]
 ---
 
-<section id="precios" class="relative py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-white via-primary-50/30 to-white overflow-hidden">
+<section id="precios" class="relative py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-background via-primary-50/40 to-background overflow-hidden">
   <!-- Background decorations -->
   <div class="absolute inset-0 -z-10">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary-100/50 to-transparent rounded-full blur-3xl"></div>
@@ -64,14 +65,14 @@ const plans = [
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
     <div class="text-center max-w-2xl mx-auto" data-animate>
-      <span class="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-semibold text-primary-800 shadow-sm border border-primary-200">
-        Precios
+      <span class="inline-block font-data text-xs font-medium uppercase tracking-[0.18em] text-primary-700">
+        Precios<span class="eyebrow-caret"></span>
       </span>
-      <h2 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+      <h2 class="mt-6 font-display text-2xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
         Precios claros
       </h2>
-      <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-        30 días para probarlo. Sin tarjeta. Si no te convence, no pagas.
+      <p class="mt-6 text-lg text-foreground-muted leading-relaxed">
+        Reserva una demo de 30 min y te enseñamos cómo encaja en tu día a día.
       </p>
     </div>
 
@@ -98,7 +99,7 @@ const plans = [
             <div class="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary-400 via-primary-500 to-accent-500 opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
           )}
 
-          <div class={`relative h-full rounded-3xl bg-white p-6 sm:p-8 transition-all duration-500 ${plan.popular ? 'shadow-2xl shadow-primary-900/20 ring-2 ring-primary-500' : 'shadow-xl shadow-gray-900/5 border border-gray-200/80 hover:border-primary-200 hover:shadow-2xl'} group-hover:-translate-y-2`}>
+          <div class={`relative h-full rounded-3xl bg-surface p-6 sm:p-8 transition-all duration-500 ${plan.popular ? 'shadow-2xl shadow-primary-900/20 ring-2 ring-primary-500' : 'shadow-xl shadow-gray-900/5 border border-primary-100/80 hover:border-primary-200 hover:shadow-2xl'} group-hover:-translate-y-2`}>
             {/* Popular badge */}
             {plan.popular && (
               <div class="absolute -top-5 left-1/2 -translate-x-1/2">
@@ -113,27 +114,27 @@ const plans = [
 
             {/* Plan header */}
             <div class="text-center pt-4">
-              <h3 class="text-xl font-bold text-gray-900">{plan.name}</h3>
-              <p class="mt-2 text-sm text-gray-500">{plan.description}</p>
+              <h3 class="font-display text-xl font-bold text-foreground">{plan.name}</h3>
+              <p class="mt-2 text-sm text-foreground-muted">{plan.description}</p>
 
               {/* Price */}
               {plan.price ? (
                 <div class="mt-8">
                   <div class="flex items-baseline justify-center">
-                    <span class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
+                    <span class="font-data text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
                       {plan.price.monthly}
                     </span>
-                    <span class="ml-1 text-xl sm:text-2xl font-medium text-gray-400">€</span>
-                    <span class="ml-2 text-base font-medium text-gray-500">/mes</span>
+                    <span class="ml-1 text-xl sm:text-2xl font-medium text-foreground-muted">€</span>
+                    <span class="ml-2 text-base font-medium text-foreground-muted">/mes</span>
                   </div>
-                  <p class="mt-2 text-sm text-gray-400">
-                    {plan.price.yearly}€/año · se factura una vez al año
+                  <p class="mt-2 text-sm text-foreground-muted">
+                    <span class="font-data">{plan.price.yearly}€/año</span> · se factura una vez al año
                   </p>
                 </div>
               ) : (
                 <div class="mt-8">
-                  <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900">A medida</span>
-                  <p class="mt-2 text-sm text-gray-400">Adaptado a tu organización</p>
+                  <span class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">A medida</span>
+                  <p class="mt-2 text-sm text-foreground-muted">Adaptado a tu organización</p>
                 </div>
               )}
             </div>
@@ -141,11 +142,13 @@ const plans = [
             {/* CTA */}
             <div class="mt-8">
               <a
-                href={plan.price ? `${appUrl}/register` : '#contacto'}
+                href={plan.price ? calendlyUrl : '#contacto'}
+                target={plan.price ? '_blank' : undefined}
+                rel={plan.price ? 'noopener noreferrer' : undefined}
                 class={`group/btn relative block w-full rounded-2xl py-4 px-6 text-center text-base font-semibold transition-all duration-300 overflow-hidden ${
                   plan.popular
                     ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary-900/30 hover:shadow-xl hover:shadow-primary-900/40 hover:-translate-y-0.5'
-                    : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
+                    : 'bg-surface-secondary text-foreground hover:bg-primary-600 hover:text-white'
                 }`}
               >
                 {/* Shine effect */}
@@ -166,7 +169,7 @@ const plans = [
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <span class="text-sm text-gray-600">{feature}</span>
+                  <span class="text-sm text-foreground-muted">{feature}</span>
                 </li>
               ))}
               {plan.notIncluded.map((feature) => (
@@ -187,14 +190,14 @@ const plans = [
 
     {/* Garantía */}
     <div class="mt-16 text-center" data-animate>
-      <div class="inline-flex items-center gap-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-gray-200/50 px-6 py-4 shadow-lg shadow-gray-900/5">
+      <div class="inline-flex items-center gap-3 rounded-2xl bg-surface/80 backdrop-blur-sm border border-primary-100/60 px-6 py-4 shadow-lg shadow-gray-900/5">
         <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-100">
           <svg class="w-5 h-5 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
         </div>
-        <p class="text-sm text-gray-600">
-          <span class="font-semibold text-gray-900">Sin permanencia.</span> Cancelas cuando quieras.
+        <p class="text-sm text-foreground-muted">
+          <span class="font-semibold text-foreground">Sin permanencia.</span> Cancelas cuando quieras.
         </p>
       </div>
     </div>

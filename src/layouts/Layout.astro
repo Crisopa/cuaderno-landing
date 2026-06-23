@@ -3,6 +3,7 @@ import '../styles/global.css'
 import { ClientRouter } from 'astro:transitions'
 import Analytics from '@vercel/analytics/astro'
 import CookieBanner from '../components/CookieBanner.astro'
+import ClickSpark from '../components/react/ClickSpark.tsx'
 
 interface Props {
   title?: string
@@ -10,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = 'Crisopa — El copiloto agronómico del asesor',
-  description = 'Habla con ChatGPT o Claude y registra visitas, planifica campañas enteras y crea tratamientos verificados contra el MAPA. El copiloto agronómico del ingeniero asesor: tú decides en campo, él se ocupa del papeleo.'
+  title = 'Crisopa — Copiloto agronómico con IA | Cuaderno de campo digital',
+  description = 'Lleva todo tu trabajo agronómico —agenda, planificación, planes de abonado, tratamientos y el cuaderno de campo— en minutos con IA. Habla con ChatGPT o Claude o trabaja desde el ordenador. Reserva una demo.'
 } = Astro.props
 ---
 
@@ -64,10 +65,33 @@ const {
       gtag('config', 'AW-18086869043');
     </script>
   </head>
-  <body class="font-sans antialiased text-gray-900 bg-white overflow-x-hidden">
+  <body class="font-sans antialiased text-foreground bg-background overflow-x-hidden">
     <slot />
+    <ClickSpark client:idle sparkColor="#0fa877" sparkRadius={18} sparkCount={8} />
     <CookieBanner />
     <Analytics />
+
+    <!-- Scroll suave SOLO para anclas (delegado en document: sobrevive a las View Transitions).
+         No se usa `scroll-behavior: smooth` global para no romper la restauración de scroll del router. -->
+    <script>
+      document.addEventListener('click', (e) => {
+        const link = (e.target as Element)?.closest?.('a[href*="#"]')
+        if (!link) return
+
+        const url = new URL((link as HTMLAnchorElement).href, location.href)
+        // Solo si el ancla apunta a la página actual
+        if (url.pathname !== location.pathname || !url.hash) return
+
+        const target = document.querySelector(url.hash)
+        if (!target) return
+
+        e.preventDefault()
+        target.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        })
+        history.pushState(null, '', url.hash)
+      })
+    </script>
 
     <!-- Intersection Observer for scroll animations -->
     <script>

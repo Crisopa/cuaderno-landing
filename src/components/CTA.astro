@@ -1,10 +1,22 @@
 ---
-const appUrl = 'https://panel.crisopa.app'
+import Aurora from './react/Aurora.tsx'
+const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
 ---
 
 <section class="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
   <!-- Gradient background -->
   <div class="absolute inset-0 bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900"></div>
+
+  <!-- Aurora animada (WebGL, lazy, respeta prefers-reduced-motion) -->
+  <div class="absolute inset-0 opacity-50 mix-blend-screen pointer-events-none" aria-hidden="true">
+    <Aurora
+      client:visible
+      colorStops={['#2fd6a0', '#7eecc4', '#0c9b6e']}
+      amplitude={1.1}
+      blend={0.6}
+      speed={0.4}
+    />
+  </div>
 
   <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center" data-animate>
     <!-- Logo -->
@@ -38,10 +50,13 @@ const appUrl = 'https://panel.crisopa.app'
     <!-- CTA Button -->
     <div class="mt-10">
       <a
-        href={`${appUrl}/register`}
-        class="group inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary-800 shadow-xl transition-all duration-300 hover:bg-primary-50 hover:-translate-y-0.5 hover:shadow-2xl"
+        href={calendlyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-press
+        class="group inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-primary-800 shadow-xl transition-[background-color,box-shadow,transform] duration-300 hover:bg-primary-50 hover:-translate-y-0.5 hover:shadow-2xl"
       >
-        Prueba gratis
+        Reservar demo
         <svg class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
@@ -54,21 +69,21 @@ const appUrl = 'https://panel.crisopa.app'
         <svg class="w-4 h-4 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
-        <span>30 días gratis</span>
+        <span>Demo en <span class="font-data">30 min</span></span>
       </div>
       <div class="hidden sm:block w-px h-4 bg-primary-600"></div>
       <div class="flex items-center gap-2">
         <svg class="w-4 h-4 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
-        <span>Sin tarjeta</span>
+        <span>Sin compromiso</span>
       </div>
       <div class="hidden sm:block w-px h-4 bg-primary-600"></div>
       <div class="flex items-center gap-2">
         <svg class="w-4 h-4 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
-        <span>Cancela cuando quieras</span>
+        <span>Online</span>
       </div>
     </div>
   </div>

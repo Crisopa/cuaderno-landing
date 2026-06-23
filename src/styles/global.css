@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Sora:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 /* ========================================
@@ -6,18 +6,28 @@
    ======================================== */
 
 :root {
-  /* ESCALA VERDE BOSQUE FRÍO (50-950) - Consistente con la app */
-  --green-50:  oklch(0.975 0.015 165);
-  --green-100: oklch(0.938 0.032 165);
-  --green-200: oklch(0.878 0.052 165);
-  --green-300: oklch(0.788 0.078 165);
-  --green-400: oklch(0.688 0.102 165);
-  --green-500: oklch(0.578 0.112 165);
-  --green-600: oklch(0.488 0.107 165);
-  --green-700: oklch(0.418 0.097 165);
-  --green-800: oklch(0.348 0.082 165);
-  --green-900: oklch(0.278 0.062 165);
-  --green-950: oklch(0.198 0.042 165);
+  /* ESCALA VERDE — Esmeralda con voltaje (estética tool: Supabase-like),
+     idéntica a la app (cuaderno-campo). Croma elevado en tonos medios (300-600)
+     donde viven marca y acentos; hue ~170 esmeralda ligeramente enfriado. */
+  --green-50:  oklch(0.975 0.018 172);
+  --green-100: oklch(0.935 0.042 172);
+  --green-200: oklch(0.875 0.072 171);
+  --green-300: oklch(0.785 0.110 171);
+  --green-400: oklch(0.700 0.142 170);
+  --green-500: oklch(0.610 0.158 170);
+  --green-600: oklch(0.530 0.152 170);
+  --green-700: oklch(0.452 0.136 170);
+  --green-800: oklch(0.372 0.110 171);
+  --green-900: oklch(0.298 0.080 172);
+  --green-950: oklch(0.208 0.055 172);
+
+  /* Superficies cálidas — fondo crema (no blanco SaaS) y superficie/tinta.
+     Definidas como tokens para poder flipar a una variante oscura más adelante. */
+  --background: oklch(0.988 0.006 95);   /* crema muy sutil, hue cálido 95 */
+  --surface: oklch(1 0 0);               /* cards en blanco puro: despegan del crema */
+  --surface-secondary: oklch(0.972 0.006 95);
+  --foreground: oklch(0.205 0.01 160);   /* tinta casi negra con pelín de verde */
+  --foreground-muted: oklch(0.520 0.012 160);
 
   /* ESCALA ÁMBAR (50-950) */
   --amber-50: oklch(0.988 0.014 84);
@@ -34,10 +44,19 @@
 }
 
 @theme {
-  /* Tipografía */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Tipografía — alineada con la app: Sora (marca/display), Geist (cuerpo),
+     Geist Mono (datos: ha, dosis, UF, fechas, importes). */
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
   --font-logo: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Superficies cálidas (mapeo Tailwind) */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
 
   /* Escala verde sage - color principal */
   --color-primary-50: var(--green-50);
@@ -167,8 +186,8 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 20px oklch(0.578 0.112 165 / 0.3); }
-  to { box-shadow: 0 0 40px oklch(0.578 0.112 165 / 0.6); }
+  from { box-shadow: 0 0 20px oklch(0.610 0.158 170 / 0.35); }
+  to { box-shadow: 0 0 40px oklch(0.610 0.158 170 / 0.65); }
 }
 
 @keyframes bounce-soft {
@@ -274,10 +293,10 @@
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px oklch(0.488 0.107 165 / 0.25), 0 0 60px oklch(0.488 0.107 165 / 0.1);
+    box-shadow: 0 0 20px oklch(0.530 0.152 170 / 0.30), 0 0 60px oklch(0.530 0.152 170 / 0.12);
   }
   50% {
-    box-shadow: 0 0 30px oklch(0.488 0.107 165 / 0.4), 0 0 80px oklch(0.488 0.107 165 / 0.15);
+    box-shadow: 0 0 30px oklch(0.530 0.152 170 / 0.45), 0 0 80px oklch(0.530 0.152 170 / 0.18);
   }
 }
 
@@ -433,7 +452,7 @@
   transform: perspective(800px) rotateX(2deg) rotateY(-1deg) translateY(-8px) scale(1.01);
   box-shadow:
     0 30px 60px -15px rgba(0, 0, 0, 0.12),
-    0 0 0 1px oklch(0.578 0.112 165 / 0.08);
+    0 0 0 1px oklch(0.610 0.158 170 / 0.10);
 }
 
 /* ========================================
@@ -550,7 +569,7 @@
 .btn-primary {
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary::before {
@@ -575,7 +594,7 @@
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px oklch(0.348 0.082 165 / 0.3);
+  box-shadow: 0 10px 30px oklch(0.372 0.110 171 / 0.35);
 }
 
 .btn-primary:active {
@@ -587,8 +606,15 @@
    SCROLL & COMPORTAMIENTO
    ======================================== */
 
+/*
+  No usamos `scroll-behavior: smooth` global en <html>: entra en conflicto con la
+  restauración de scroll del ClientRouter (View Transitions) de Astro, que recoloca
+  la página con scrollTo() en cada navegación. Con smooth global ese reposicionamiento
+  se anima y la página "se desliza" hasta el final al entrar/navegar.
+  El scroll suave para anclas se gestiona por JS en Layout.astro solo en el clic.
+*/
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* compensa el header fijo al saltar a una ancla */
 }
 
 /* Scrollbar personalizada */
@@ -842,6 +868,53 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ========================================
+   DETALLES DE INTERACCIÓN (interface polish)
+   ======================================== */
+
+/* Tipografía: titulares equilibrados, cuerpo sin huérfanos */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+/* Números dinámicos sin saltos de layout */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Datos técnicos en mono tabular (ha, dosis, UF, fechas, importes, SIGPAC).
+   Da el carácter "herramienta de trabajo" de la app. Aplicar a cifras/códigos,
+   no a texto corrido. */
+.font-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Outline sutil en imágenes para profundidad consistente */
+.img-outline {
+  outline: 1px solid rgba(0, 0, 0, 0.06);
+  outline-offset: -1px;
+}
+
+/* Scale on press: feedback táctil en elementos interactivos.
+   Solo transiciona scale (nunca `all`). 0.96 según guía de detalle. */
+[data-press],
+.press {
+  transition: scale 0.18s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.18s cubic-bezier(0.2, 0, 0, 1);
+}
+
+[data-press]:active,
+.press:active {
+  scale: 0.96;
+}
+
 /* Respetar preferencia de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -862,5 +935,33 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     transform: none;
     filter: none;
+  }
+
+  /* El caret del eyebrow queda visible y fijo */
+  .eyebrow-caret {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+
+/* Eyebrow: cursor de terminal que parpadea tras el rótulo */
+.eyebrow-caret {
+  display: inline-block;
+  width: 0.62em;
+  height: 2px;
+  margin-left: 0.4em;
+  vertical-align: baseline;
+  background-color: var(--color-primary-600);
+  animation: caret-blink 1.15s linear infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
   }
 }
