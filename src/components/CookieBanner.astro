@@ -1,29 +1,27 @@
 <div
   id="cookie-banner"
-  class="fixed bottom-0 left-0 right-0 z-[100] translate-y-full transition-transform duration-500 ease-out"
+  class="fixed bottom-4 left-4 right-4 sm:right-auto z-[100] w-auto sm:max-w-sm translate-y-[150%] opacity-0 transition-all duration-500 ease-out"
   role="dialog"
   aria-label="Aviso de cookies"
 >
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
-    <div class="rounded-2xl bg-gray-950 border border-gray-800/60 shadow-2xl shadow-black/20 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-      <p class="text-sm text-gray-300 leading-relaxed flex-1">
-        Usamos cookies técnicas y, con tu permiso, cookies de análisis y marketing para medir el rendimiento del sitio.
-        Más info en nuestra <a href="/cookies" class="text-primary-400 hover:text-primary-300 underline underline-offset-2 transition-colors">política de cookies</a>.
-      </p>
-      <div class="flex gap-2 shrink-0 w-full sm:w-auto">
-        <button
-          id="cookie-reject"
-          class="flex-1 sm:flex-none rounded-lg bg-gray-800 px-4 py-2.5 text-sm font-semibold text-gray-200 hover:bg-gray-700 active:bg-gray-900 transition-colors cursor-pointer"
-        >
-          Solo esenciales
-        </button>
-        <button
-          id="cookie-accept"
-          class="flex-1 sm:flex-none rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-500 active:bg-primary-700 transition-colors cursor-pointer"
-        >
-          Aceptar
-        </button>
-      </div>
+  <div class="rounded-2xl bg-gray-950 border border-gray-800/60 shadow-2xl shadow-black/30 p-4 sm:p-5 flex flex-col gap-3.5">
+    <p class="text-sm text-gray-300 leading-relaxed">
+      Usamos cookies técnicas y, con tu permiso, de análisis y marketing para medir el rendimiento del sitio.
+      <a href="/cookies" class="text-primary-400 hover:text-primary-300 underline underline-offset-2 transition-colors">Más info</a>.
+    </p>
+    <div class="flex gap-2">
+      <button
+        id="cookie-reject"
+        class="flex-1 rounded-lg bg-gray-800 px-4 py-2.5 text-sm font-semibold text-gray-200 hover:bg-gray-700 active:bg-gray-900 transition-colors cursor-pointer"
+      >
+        Solo esenciales
+      </button>
+      <button
+        id="cookie-accept"
+        class="flex-1 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-500 active:bg-primary-700 transition-colors cursor-pointer"
+      >
+        Aceptar
+      </button>
     </div>
   </div>
 </div>
@@ -57,14 +55,14 @@
       return
     }
 
-    requestAnimationFrame(() => {
-      banner.classList.remove('translate-y-full')
-      banner.classList.add('translate-y-0')
-    })
+    setTimeout(() => {
+      banner.classList.remove('translate-y-[150%]', 'opacity-0')
+      banner.classList.add('translate-y-0', 'opacity-100')
+    }, 1500)
 
     function dismissBanner() {
-      banner!.classList.remove('translate-y-0')
-      banner!.classList.add('translate-y-full')
+      banner!.classList.remove('translate-y-0', 'opacity-100')
+      banner!.classList.add('translate-y-[150%]', 'opacity-0')
       banner!.addEventListener('transitionend', () => banner!.remove(), { once: true })
     }
 
