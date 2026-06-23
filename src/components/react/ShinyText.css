@@ -1,21 +1,26 @@
 .shiny-text {
   color: currentColor;
+  display: inline-block;
+}
+
+/* El brillo solo se dispara al pasar el ratón por el contenedor .shine-hover.
+   En reposo el texto se ve como color sólido (sin barrido ni parpadeo).
+   La duración la fija el prop `speed` (animation-duration en línea). */
+.shine-hover:hover .shiny-text:not(.shiny-text--disabled) {
   background: linear-gradient(
     120deg,
-    currentColor 40%,
-    rgba(255, 255, 255, 0.95) 50%,
-    currentColor 60%
+    currentColor 42%,
+    rgba(255, 255, 255, 0.7) 50%,
+    currentColor 58%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: shiny-text-shine linear infinite;
-}
-
-.shiny-text--disabled {
-  animation: none;
+  animation-name: shiny-text-shine;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes shiny-text-shine {
@@ -28,7 +33,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shiny-text {
+  .shine-hover:hover .shiny-text {
     animation: none;
+    background: none;
+    -webkit-text-fill-color: currentColor;
   }
 }
