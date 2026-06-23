@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import './ShapeGrid.css';
 
 // Hash deterministas en [0,1) a partir de un índice ENTERO ABSOLUTO de parcela.
@@ -18,7 +18,11 @@ const ShapeGrid = ({
   direction = 'right',
   speed = 1,
   borderColor = '#999',
-  squareSize = 40,
+  squareSize: squareSizeProp = 40,
+  // Parcela más pequeña en móvil: a 56px solo caben ~7 columnas y se lee como
+  // cajotes; reduciéndola se mantiene la densidad de catastro en pantalla estrecha.
+  mobileSquareSize,
+  mobileBreakpoint = 640,
   hoverFillColor = '#222',
   hoverTrailAmount = 0,
   // Catastro: lindes (bordes gruesos de finca) y parcelas ocupadas (tinte tenue).
@@ -29,6 +33,18 @@ const ShapeGrid = ({
   parcelChance = 0.1, // proporción de parcelas con tinte de "finca ocupada"
   className = ''
 }) => {
+  // Detectamos viewport estrecho con matchMedia y derivamos el tamaño efectivo.
+  // El cuerpo del efecto sigue usando `squareSize`, que ahora es este const: al
+  // cambiar de breakpoint se recalcula y el efecto se reinicia (está en sus deps).
+  const [viewportSmall, setViewportSmall] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${mobileBreakpoint - 1}px)`);
+    const update = () => setViewportSmall(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, [mobileBreakpoint]);
+  const squareSize = viewportSmall && mobileSquareSize ? mobileSquareSize : squareSizeProp;
   const canvasRef = useRef(null);
   const requestRef = useRef(null);
   const gridOffset = useRef({ x: 0, y: 0 });
