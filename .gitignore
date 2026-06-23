@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Claude
 .claude/
+
+# Playwright MCP
+.playwright-mcp/
