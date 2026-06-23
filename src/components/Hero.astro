@@ -10,16 +10,22 @@ const calendlyUrl = 'https://calendly.com/demo-crisopa/30min'
   <div class="absolute inset-0 -z-10 overflow-hidden">
     <!-- Tinte cálido superior (base para legibilidad del texto) -->
     <div class="absolute inset-0 bg-gradient-to-b from-primary-50/40 via-background/55 to-background/70"></div>
-    <!-- Parcelario animado: cuadrícula en diagonal, el hover pinta una parcela -->
+    <!-- Parcelario animado: catastro de fincas en diagonal. Lindes gruesas
+         delimitan parcelas irregulares, algunas salen tintadas (finca ocupada)
+         y el hover pinta una parcela bajo el cursor. -->
     <ShapeGrid
       client:idle
-      shape="square"
       direction="diagonal"
-      speed={0.4}
+      speed={0.3}
       squareSize={56}
-      borderColor="rgba(16, 150, 120, 0.38)"
+      borderColor="rgba(16, 150, 120, 0.2)"
+      lindeColor="rgba(16, 150, 120, 0.5)"
+      lindeWidth={1.75}
+      lindeChance={0.32}
+      parcelFillColor="rgba(16, 150, 120, 0.07)"
+      parcelChance={0.1}
       hoverFillColor="rgba(16, 150, 120, 0.55)"
-      hoverTrailAmount={5}
+      hoverTrailAmount={8}
     />
     <!-- Desvanecido inferior: la cuadrícula se funde hacia el crema -->
     <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background"></div>
